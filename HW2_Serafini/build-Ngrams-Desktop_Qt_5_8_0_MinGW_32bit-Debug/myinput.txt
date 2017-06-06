@@ -1,0 +1,293 @@
+ACL（The Association for Computational Linguistics）是自然语言处理与计算语言学领域最具影响力、最具活力的级别学术会议，由计算语言学协会主办，每年一届。今年的 ACL 第 55 届年会，将于 2017 年 7 月 30 日至 8 月 4 日在加拿大温哥华举行。
+
+
+近日，ACL 2017 公布了录用的论文，其中包含生物医学、认知建模与心理语言学、交互式对话系统、机器翻译等各研究领域的 194 篇长篇论文、107 篇短篇论文、21 个软件演示以及 21 篇在由 TACL（Transactions of the Association for Computational Linguistics）接收出版并将在 ACL 2017 上进行主题演讲报告的论文。
+
+
+4 月 22 日，中国中文信息学会青年工作委员会联合腾讯公司针对这次会议在北京举办了一场「ACL 2017 论文报告会」，邀请了国内部分被录用论文的作者针对其论文进行主题报告，旨在促进国内自然语言处理相关研究的发展以及研究者之间的交流，以求共同探讨自然语言处理领域的新发展和新技术。
+
+
+这次报告会分为四个主题，分别为机器翻译、解析/语义/语篇、情绪/信息提取、社交媒体/分词/问答。
+
+
+下面介绍了此次 ACL 2017 论文报告会上海报演示的论文，并提供了相关幻灯片的开放下载链接（为了便于呈现，链接经过了缩短处理），感兴趣的读者可下载下来进行研读。值得一提的是，清华大学自然语言处理组有 7 篇论文论文被 ACL 接收，THUNLP 组对这些论文进行了简要介绍，我们引用至这篇文章中，希望能对大家有所帮助。
+
+
+第一部分：机器翻译
+
+
+报告一：Prior Knowledge Integration for Neural Machine Translation using Posterior Regularization
+
+
+
+	* 作者： Jiacheng Zhang, Yang Liu, Huanbo Luan, Jingfang Xu and Maosong Sun
+
+	* 幻灯片地址：http://t.cn/RXmnGeg
+
+
+
+
+该论文利用后验正则化为离散表示先验知识与连续表示的神经网络相结合提供统一框架，能够在不改变神经网络架构的情况下以特征函数的形式添加任意先验知识。
+
+
+
+ 
+报告二：Visualizing and Understanding Neural Machine Translation
+
+
+
+	* 作者：Yanzhuo Ding, Yang Liu, Huanbo Luan and Maosong Sun
+
+	* 幻灯片地址：http://t.cn/RXmnBU8
+
+
+
+
+该论文利用层级相关性传播可视化分析神经机器翻译，能够计算神经网络中任意两个节点的关联性，同时不要求神经网络中的函数必须可求偏导，为深入理解和调试神经机器翻译系统提供了重要的计算手段。
+
+
+
+
+
+报告三：Incorporating Word Reordering Knowledge into Attention-based Neural Machine Translation
+
+
+
+	* 作者：Jinchao Zhang, Mingxuan Wang, Qun Liu and Jie Zhou
+
+	* 幻灯片地址：http://t.cn/RXmnsh7
+
+
+
+
+
+
+
+
+报告四：Modeling Source Syntax for Neural Machine Translation
+
+
+
+	* 作者：Junhui Li, Deyi Xiong, Zhaopeng Tu, Muhua Zhu and Guodong Zhou
+
+	* 幻灯片地址：http://t.cn/RXmmw9J
+
+
+
+
+报告五：Improved Neural Machine Translation with a Syntax-Aware Encoder and Decoder
+
+
+
+	* 作者： Huadong Chen, Shujian Huang, David Chiang and Jiajun Chen
+
+	* 幻灯片地址：http://t.cn/RXmm54z
+
+
+
+
+
+
+
+报告六：Sequence-to-Dependency Neural Machine Translation
+
+
+
+	* 作者：Shuangzhi Wu, Dongdong Zhang, Nan Yang, Mu Li and Ming Zhou
+
+	* 幻灯片地址：http://t.cn/RXmmJNe
+
+
+
+
+
+
+
+第二部分：解析/语义/语篇
+
+
+报告一：Parsing to 1-endpoint-crossing, pagenumber-2 graphs
+
+
+
+	* 作者：Junjie Cao, Sheng Huang, Weiwei Sun, Xiaojun Wan
+
+	* 幻灯片地址：http://t.cn/RXmmNGj
+
+
+
+
+
+
+
+报告二：A Progressive Learning Approach to Chinese SRL Using Heterogeneous Data
+
+
+
+	* 作者：Qiaolin Xia, Zhifang Sui and Baobao Chang
+
+	* 幻灯片地址：http://t.cn/RXmm8fd
+
+
+
+
+
+
+
+报告三：Discourse Mode Identification in Essays
+
+
+
+	* 作者：Wei Song, Dong Wang, Ruiji Fu, Lizhen Liu, Ting Liu, Guoping Hu
+
+	* 幻灯片地址：http://t.cn/RXmm127
+
+
+
+
+报告四：Generating and Exploiting Large-scale Pseudo Training Data for Zero Pronoun Resolution
+
+
+
+	* 作者：Ting Liu, Yiming Cui, Qingyu Yin, Wei-Nan Zhang, Shijin Wang and Guoping Hu
+
+	* 幻灯片地址：http://t.cn/RXmuwRR
+
+
+
+
+
+
+
+第三部分：情绪/信息提取
+
+
+报告一：Linguistically Regularized LSTM for Sentiment Classification
+
+
+
+	* 作者：Qiao Qian, Minlie Huang and xiaoyan zhu
+
+	* 幻灯片地址：http://t.cn/RXmu4j2
+
+
+
+
+
+
+
+报告二：Prerequisite Relation Learning for Concepts in MOOCs
+
+
+
+	* 作者： Liangming Pan, Chengjiang Li, Juanzi Li and Jie Tang
+
+	* 幻灯片地址：http://t.cn/RXmuST6
+
+
+
+
+报告三：Learning with Noise: Enhance Distantly Supervised Relation Extraction with Dynamic Transition Matrix
+
+
+
+	* 作者：Bingfeng Luo, Yansong Feng, Zheng Wang, Zhanxing Zhu, Songfang Huang, Rui Yan and Dongyan Zhao
+
+	* 幻灯片地址：http://t.cn/RXmulBQ
+
+
+
+
+
+
+
+报告四：Joint Extraction of Entities and Relations Based on a Novel Tagging Scheme
+
+
+
+	* 作者：Suncong Zheng, Feng Wang and Hongyun Bao
+
+	* 幻灯片地址：http://t.cn/RXmunzm
+
+
+
+
+
+
+
+
+报告五：Automatically Labeled Data Generation for Large Scale Event Extraction
+
+
+
+	* 作者：Yubo Chen, Kang Liu and Jun Zhao
+
+	* 幻灯片地址：http://t.cn/RXm3vz0
+
+
+
+
+
+
+
+第四部分：社交媒体/分词/问答
+
+
+报告一：CANE: Context-Aware Network Embedding for Relation Modeling
+
+
+
+	* 作者：Cunchao Tu, Han Liu, Zhiyuan Liu and Maosong Sun
+
+	* 幻灯片地址：http://t.cn/RXm3Aeq
+
+
+
+
+该论文针对网络表示学习问题，提出上下文敏感的网络节点表示学习模型，在社会网络链接预测等任务上表现优异。
+
+
+报告二：Adversarial Multi-Criteria Learning for Chinese Word Segmentation
+
+
+
+	* 作者：Xinchi Chen, Zhan Shi, Xipeng Qiu and Xuanjing Huang
+
+	* 幻灯片地址：http://t.cn/RXm3tn9
+
+
+
+
+
+
+
+报告三：Generating Natural Answer by Incorporating Copying and Retrieving Mechanisms in Sequence-to-Sequence Learning
+
+
+
+	* 作者：Shizhu He, Kang Liu and Jun Zhao
+
+	* 幻灯片地址：http://t.cn/RXm3xMB
+
+
+
+
+
+
+
+报告四：Attention-over-Attention Neural Networks for Reading Comprehension
+
+
+
+	* 作者：Yiming Cui, Zhipeng Chen, si wei, Shijin Wang, Ting Liu and Guoping Hu
+
+	* 幻灯片地址：http://t.cn/RXm3K3K
+
+
+
+
+
+
+
+报告五：Sequential Matching Network: A New Architecture for Multi-turn Response Selection in Retrieval-based Chatbots 
+
