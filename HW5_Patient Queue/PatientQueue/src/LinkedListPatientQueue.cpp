@@ -15,19 +15,26 @@ LinkedListPatientQueue::LinkedListPatientQueue() {
 }
 
 LinkedListPatientQueue::~LinkedListPatientQueue() {
-    // TODO: write this destructor
-    delete qHead;
-
+    // free up any memory used -- for example, your linked list nodes
+    while (qHead != NULL) {
+    PatientNode *next = qHead->next; // save next ptr before deallocation
+    delete qHead; //free the memory qHead points to;
+    qHead = next;
+    }
 }
 
 void LinkedListPatientQueue::clear() {
     /*Remove all elements from the patient queue, freeing memory for all nodes that are removed.*/
-    while(qHead !=NULL) {
-        PatientNode *cur;
-        cur = &*qHead;
-        qHead = qHead->next;
-        delete cur;
+//    while(qHead !=NULL) {
+//        PatientNode *cur;
+//        cur = &*qHead;
 //        qHead = qHead->next;
+//        delete cur;
+//    }
+    while (qHead != NULL) {
+    PatientNode *next = qHead->next; // save next ptr before deallocation
+    delete qHead; //free the memory qHead points to;
+    qHead = next;
     }
 }
 
@@ -75,13 +82,14 @@ void LinkedListPatientQueue::newPatient(string name, int priority) {
     /* Create new patient.
      * Add the given person into your patient queue with the given priority.
      * Duplicate names and priorities are allowed. Any string and integer is legal; */
-    PatientNode *cur=NULL, *prev=NULL,*newOne = new PatientNode;
-    PatientNode patientIn(name,priority,cur);
-    newOne->name = name;
-    newOne->priority = priority;
-    newOne->next = cur;
+    PatientNode *cur=NULL, *prev=NULL;
+    PatientNode *newOne = new PatientNode(name,priority);
+//    PatientNode patientIn(name,priority,cur);
+//    newOne->name = name;
+//    newOne->priority = priority;
+//    newOne->next = cur;
     for (cur = qHead; cur!= NULL; cur=cur->next) {
-        if (patientIn.priority < cur->priority) break;
+        if (priority < cur->priority) break;
         prev = cur;
     }
 
@@ -116,14 +124,31 @@ void LinkedListPatientQueue::upgradePatient(string name, int newPriority) {
  * 2, the given patient is not already in the queue,
  * If the given patient name occurs multiple times in the queue,
  * you should alter the priority of the highest priority person with that name that was placed into the queue. */
+    PatientNode *prev = NULL;
     for (PatientNode *cur = qHead; cur!= NULL; cur=cur->next) {
         if (cur->name == name ) {
-            if (cur->priority < newPriority)
+            if (cur->priority <= newPriority)
                 cout << "exception" << endl;
-            else
+            else {
                 cur->priority = newPriority;
+                // Push the upgraded patient ahead
+                PatientNode *cur2;
+                PatientNode *prev2=NULL;
+                if (prev!=NULL) {
+                    for ( cur2 = qHead; cur2!= NULL; cur2=cur2->next) {
+                        if (newPriority < cur2->priority) {
+                            prev->next = cur->next; // bring the upgraded patient out of the queue
+                            cur->next = cur2; // help the patient insert into new position of the queue
+                            prev2->next = cur;
+                            break;
+                        }
+                        prev2 = cur2;
+                    }
+                }
+            }
             return;
         }
+        prev = cur;
     }
     cout << "exception" << endl;
 }

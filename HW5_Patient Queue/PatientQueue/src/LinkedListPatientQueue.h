@@ -27,8 +27,8 @@ public:
     string toString();
 
 private:
-    // TODO: add specified member variable(s)
-    // TODO: add any member functions necessary
+    /*The linked-list class is only allowed to have a single private member variable inside it:
+     * a pointer to the front of your list (for the linked list implementation).*/
     PatientNode *qHead; //list
 
 };
