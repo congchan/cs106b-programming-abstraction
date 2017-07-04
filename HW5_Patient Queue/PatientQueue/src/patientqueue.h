@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "patientnode.h"
+#include "strlib.h"
 using namespace std;
 
 class PatientQueue {

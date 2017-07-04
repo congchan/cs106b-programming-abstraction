@@ -1,9 +1,13 @@
-// heappatientqueue.h
-// THIS IS AN EXTENSION AND NOT REQUIRED FOR THE ASSIGNMENT
-// This is the H file you will edit and turn in. (TODO: Remove this comment!)
+/* heappatientqueue.h
+ THIS IS AN EXTENSION AND NOT REQUIRED FOR THE ASSIGNMENT
+ Uses a special array structure called a binary heap as its internal data storage.
+ The only private member variables this class is allowed to have inside it are
+ a pointer to your internal array of elements,
+ and integers for the array's capacity
+ and the priority queue's size.*/
 
 #pragma once
-
+#include "array"
 #include <iostream>
 #include <string>
 #include "patientnode.h"
@@ -24,6 +28,13 @@ public:
     string toString();
 
 private:
-    // TODO: add specified member variable(s)
-    // TODO: add any member functions necessary
+    /*The only private member variables this class is allowed to have inside it
+     * are a pointer to your internal array of elements,
+     * and integers for the array's capacity
+     * and the priority queue's size.*/
+    PatientNode *binaryQueue;
+
+    int capacity;
+    int size;
+
 };
