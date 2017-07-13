@@ -1,6 +1,9 @@
 /* File name: life.cpp
  * For CS106B Assignment 1: The Game of Life.
  * The Game of Life is a simulation of the life cycle of bacteria using a two-dimensional grid of cells.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 #include <cctype>
 #include <cmath>

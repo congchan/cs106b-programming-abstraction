@@ -4,6 +4,15 @@
  * Name:
  * Section leader:
  * This file contains grammar generating code for CS106B.
+ *
+ * Assignment 3B: Grammar Solver
+ * Write a function for generating random sentences from a grammar.
+ * The function accepts a reference to an input file representing a language grammar,
+ * along with a symbol to randomly generate and the number of times to generate it.
+ * Your function should generate the given number of random expansions of the given symbol and return them as a Vector of strings.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 
 #include "grammarsolver.h"

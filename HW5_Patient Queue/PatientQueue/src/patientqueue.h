@@ -1,4 +1,6 @@
-// This is the H file you will edit and turn in. (TODO: Remove this comment!)
+/* @author Cong Chen
+* @version 2017/07
+*/
 
 #pragma once
 

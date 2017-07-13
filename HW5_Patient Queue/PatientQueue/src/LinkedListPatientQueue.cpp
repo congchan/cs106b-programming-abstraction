@@ -1,5 +1,7 @@
 /* File LinkedListPatientQueue.cpp
  * This class uses a sorted linked list to manages a waiting line of patients to be processed at a hospital.
+ * @author Cong Chen
+ * @version 2017/07
  */
 #include "LinkedListPatientQueue.h"
 

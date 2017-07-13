@@ -1,6 +1,6 @@
-// heappatientqueue.cpp
-// THIS IS AN EXTENSION AND NOT REQUIRED FOR THE ASSIGNMENT
-// This is the CPP file you will edit and turn in. (TODO: Remove this comment!)
+/*@author Cong Chen
+ * @version 2017/07
+ */
 
 #include "HeapPatientQueue.h"
 

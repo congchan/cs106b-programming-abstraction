@@ -2,6 +2,9 @@
  * A Boggle class is used to abstract a boggle game.
  * A Boggle object represents the current board and state for a single Boggle game,
  * and it should have member functions to perform most major game functions like finding words on the board and keeping score.
+
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 
 #include "Boggle.h"

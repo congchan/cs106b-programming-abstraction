@@ -2,6 +2,9 @@
  * CS106B assignment2 Part A: Word Ladder.
  * A word ladder is a connection from one word to another formed by changing one letter
  * at a time with the constraint that at each step the sequence of letters still forms a valid word.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 
 #include <cctype>

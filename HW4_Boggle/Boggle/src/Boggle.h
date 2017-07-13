@@ -1,8 +1,13 @@
-// This is a .h file you will edit and turn in.
-// We have provided a skeleton for you,
-// but you must finish it as described in the spec.
-// Also remove these comments here and add your own.
-// TODO: remove this comment header
+/* Assignment 4: Boggle
+ * Write a program that plays a fun, graphical rendition of this little charmer,
+ * adapted for the human and computer to play pitted against one another.
+ *
+ * The Boggle game board is a square grid onto which you randomly distribute a set of letter cubes.
+ * The goal is to find words on the board by tracing a path through adjoining letters.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
+ */
 
 #ifndef _boggle_h
 #define _boggle_h

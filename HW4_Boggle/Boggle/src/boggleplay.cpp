@@ -1,8 +1,9 @@
-// This is a .cpp file you will edit and turn in.
-// We have provided a skeleton for you,
-// but you must finish it as described in the spec.
-// Also remove these comments here and add your own.
-// TODO: remove this comment header
+/* Assignment 4: Boggle
+ * The play interface for the game.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
+ */
 
 #include "lexicon.h"
 #include "simpio.h"

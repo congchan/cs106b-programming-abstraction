@@ -1,5 +1,7 @@
-/* heappatientqueue.h
- THIS IS AN EXTENSION AND NOT REQUIRED FOR THE ASSIGNMENT
+/* File: heappatientqueue.h
+ * @author Cong Chen
+ * @version 2017/07
+
  Uses a special array structure called a binary heap as its internal data storage.
  The only private member variables this class is allowed to have inside it are
  a pointer to your internal array of elements,

@@ -3,6 +3,9 @@
  * Creates a private struct to holds a patient name, a priority, an integer timestamp for breaking ties.
  * This timestamp can be based on an incrementing counter elsewhere in your class,
  * and every time a patient is enqueued you can update the timestamp and add it to the patient's struct.
+ *
+ * @author Cong Chen
+ * @version 2017/07
  */
 
 #include "VectorPatientQueue.h"

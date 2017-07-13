@@ -1,3 +1,9 @@
+/* Assignment 0: Getting started in C++
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
+ */
+
 #include <iostream>
 #include "console.h"
 #include "simpio.h"

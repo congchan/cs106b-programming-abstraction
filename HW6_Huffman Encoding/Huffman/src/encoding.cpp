@@ -1,12 +1,17 @@
-// This is the CPP file you will edit and turn in.
-// Also remove these comments here and add your own, along with
-// comments on every function and on complex code sections.
-// TODO: remove this comment header
+/* Assignment 6: Huffman
+ * Build a file compression algorithm that uses binary trees and priority queues.
+ * This is the code to perform Huffman encoding and decoding.
+ * @Author: Cong Chen
+ * @Version: 2017/07
+ */
+
 
 #include "encoding.h"
 #include <limits>
 #include "pqueue.h"
 
+// This is the recursion helper function for traversing the tree
+void buildEncodingMap(HuffmanNode *encodingTree, Map<int, string>& encodingMap, string bits);
 
 Map<int, int> buildFrequencyTable(istream& input) {
     /* Count and return a mapping from each character (represented as int here) to the number of times that character appears.

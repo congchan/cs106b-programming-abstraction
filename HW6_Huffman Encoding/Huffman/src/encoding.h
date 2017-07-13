@@ -34,5 +34,5 @@ void compress(istream& input, obitstream& output);
 void decompress(ibitstream& input, ostream& output);
 void freeTree(HuffmanNode* node);
 
-void buildEncodingMap(HuffmanNode *encodingTree, Map<int, string>& encodingMap, string bits);
+
 #endif

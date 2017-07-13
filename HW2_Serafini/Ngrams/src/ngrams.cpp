@@ -3,6 +3,9 @@
  * This programme reads in a source text and build an order k Markov model called "N- grams" for it,
  * and generate random output that follows the frequency patterns of the model.
  * So that the new text that sounds like it came from the same author as that file.
+ *
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 
 #include <cctype>

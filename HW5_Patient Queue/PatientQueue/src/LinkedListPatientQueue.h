@@ -3,6 +3,9 @@
  * When inserting a new node with priority number N, travers the list to find the position to insert.
  * Beginning with the front end with the smallest prior num.
  * Keep looking for the next node until which with the bigger priority number M(M>N).
+ *
+ * @author Cong Chen
+ * @version 2017/07
  */
 #pragma once
 

@@ -4,6 +4,9 @@
  * Name:
  * Section leader:
  * This file contains fractal problems for CS106B.
+ * Assignment 3A: Fractals
+ * @Author: Cong Chen
+ * @Version: 2017/06
  */
 
 
