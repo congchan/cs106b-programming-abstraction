@@ -230,23 +230,25 @@ Path alternativeRoute(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
     for(int i=0;i<best.size()-1;i++){
 
         if (best[i]!=end) {
+            // loop through all edges and exluded it to generate new path
             RoadEdge* ignore = graph.edgeBetween(best[i], best[i+1]);
             Path new_alternate = generalFind(graph, start, end, true, ignore);
             Set<RoadNode*> new_alternate_RoadNode;
             new_alternate_RoadNode.add(start);
+            // calculate the cost of each new path
             double new_alternate_cost = NULL;
             for (int j=0;j<new_alternate.size()-1;j++){
                 new_alternate_RoadNode.add(new_alternate[j+1]);
                 RoadEdge* edge = graph.edgeBetween(new_alternate[j], new_alternate[j+1]);
                 new_alternate_cost += edge->cost();
             }
-
+            //calculate the difference index
             double difference = 0;
             for (auto & vertex : new_alternate) {
                 if (!best_RoadNode.contains(vertex)) difference++;
             }
             difference = difference/best.size();
-
+            // compare and update
             if (difference>SUFFICIENT_DIFFERENCE && ( minCost == NULL || minCost > new_alternate_cost) ){
                 alternate = new_alternate;
                 minCost = new_alternate_cost;
