@@ -113,11 +113,48 @@ Path dijkstrasAlgorithm(const RoadGraph& graph, RoadNode* start, RoadNode* end) 
 }
 
 Path aStar(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
-    /* TODO: Delete the following lines and implement this function! */
-    (void) graph;
-    (void) start;
-    (void) end;
-    return {};
+    start->setColor(Color::YELLOW);
+    Vector<RoadNode*> path = Vector<RoadNode*>();
+    if (start==end) {
+        path.add(start);
+        return path;
+    }
+    // The cost of each vertex is the priority
+    PriorityQueue<RoadNode*> frontier;
+    frontier.enqueue(start,0);
+    // keep track of nodes that have already been visited.
+    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
+    came_from.put(start,NULL);
+    // keep track of the cost to reach this vertext
+    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
+    cost_so_far.put(start,0);
+    while(!frontier.isEmpty()) {
+        auto visiting = frontier.dequeue();
+        visiting->setColor(Color::GREEN);
+        if (visiting == end) break;
+        for(auto& next : graph.neighborsOf(visiting)) {
+            RoadEdge* between = graph.edgeBetween(visiting,next);
+            double Heuristic = graph.crowFlyDistanceBetween(next,end)/graph.maxRoadSpeed();
+            double new_cost = cost_so_far[visiting]+ between->cost();
+            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
+                cost_so_far.put(next,new_cost);
+                frontier.enqueue(next,new_cost+Heuristic);
+                next->setColor(Color::YELLOW);
+                came_from.put(next,visiting);
+            }
+        }
+    }
+
+    // Reconstruct paths, if no path found, came_from do not contains key[end]
+    auto visiting = end;
+    if (came_from.containsKey(visiting)) {
+        while(true){
+            path.insert(0,visiting);
+            if (visiting == start) break;
+            visiting = came_from[visiting];
+        }
+    }
+    return path;
 }
 
 Path alternativeRoute(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
