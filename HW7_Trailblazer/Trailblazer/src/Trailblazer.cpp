@@ -18,6 +18,65 @@
 using namespace std;
 
 static const double SUFFICIENT_DIFFERENCE = 0.2;
+/* Define a function that could perform both dijkstrasAlgorithm, aStar and alternativeRoute
+ * if dijkstrasAlgorithm, then astar is FALSE; if aStar, then astar is TRUE;
+ */
+
+Path generalFind(const RoadGraph& graph, RoadNode* start, RoadNode* end, bool astar = false, RoadEdge* ignore = NULL) {
+    int HeuristicIndex=0;
+    if (astar) HeuristicIndex=1;
+    start->setColor(Color::YELLOW);
+    Vector<RoadNode*> path = Vector<RoadNode*>();
+    if (start==end) {
+        path.add(start);
+        return path;
+    }
+    // The cost of each vertex is the priority
+    PriorityQueue<RoadNode*> frontier;
+    frontier.enqueue(start,0);
+    // keep track of nodes that have already been visited.
+    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
+    came_from.put(start,NULL);
+    // keep track of the cost to reach this vertext
+    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
+    cost_so_far.put(start,0);
+    while(!frontier.isEmpty()) {
+        auto visiting = frontier.dequeue();
+        visiting->setColor(Color::GREEN);
+        if (visiting == end) break;
+        Set<RoadNode*> neighbors = graph.neighborsOf(visiting);
+        // Ignores the specific edge
+        if (ignore!=NULL) {
+            if (ignore->from()==visiting) neighbors.remove(ignore->to());
+        }
+
+        for(auto& next : neighbors) {
+            RoadEdge* between = graph.edgeBetween(visiting,next);
+            double Heuristic = graph.crowFlyDistanceBetween(next,end)/graph.maxRoadSpeed();
+            double new_cost = cost_so_far[visiting]+ between->cost();
+            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
+                cost_so_far.put(next,new_cost);
+                frontier.enqueue(next,new_cost+Heuristic*HeuristicIndex);
+                next->setColor(Color::YELLOW);
+                came_from.put(next,visiting);
+            }
+        }
+    }
+
+    // Reconstruct paths, if no path found, came_from do not contains key[end]
+    auto visiting = end;
+    if (came_from.containsKey(visiting)) {
+        while(true){
+            path.insert(0,visiting);
+            if (visiting == start) break;
+            visiting = came_from[visiting];
+        }
+    }
+    return path;
+}
+
+
+
 
 /* Path is a typedef of a Vector<RoadNode*>. The path returned should be a list of all vertexes along that path,
  * with the starting vertex first (index 0 of the vector) and the ending vertex last.
@@ -68,93 +127,95 @@ Path breadthFirstSearch(const RoadGraph& graph, RoadNode* start, RoadNode* end) 
  * For each of v's neighbors, w, if the new path's cost from v to w is better than previous dw, dw will be updated.
  * But w will not be marked as known, unless at next while-loop stage, dw happens to be the smalles. */
 Path dijkstrasAlgorithm(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
-    start->setColor(Color::YELLOW);
-    Vector<RoadNode*> path = Vector<RoadNode*>();
-    if (start==end) {
-        path.add(start);
-        return path;
-    }
-    // The cost of each vertex is the priority
-    PriorityQueue<RoadNode*> frontier;
-    frontier.enqueue(start,0);
-    // keep track of nodes that have already been visited.
-    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
-    came_from.put(start,NULL);
-    // keep track of the cost to reach this vertext
-    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
-    cost_so_far.put(start,0);
-    while(!frontier.isEmpty()) {
-        auto visiting = frontier.dequeue();
-        visiting->setColor(Color::GREEN);
-        if (visiting == end) break;
-        for(auto& next : graph.neighborsOf(visiting)) {
-            RoadEdge* between = graph.edgeBetween(visiting,next);
-            double new_cost = cost_so_far[visiting]+ between->cost();
-            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
-                cost_so_far.put(next,new_cost);
-                frontier.enqueue(next,new_cost);
-                next->setColor(Color::YELLOW);
-                came_from.put(next,visiting);
-            }
-        }
-    }
+    return generalFind(graph, start, end);
+//    start->setColor(Color::YELLOW);
+//    Vector<RoadNode*> path = Vector<RoadNode*>();
+//    if (start==end) {
+//        path.add(start);
+//        return path;
+//    }
+//    // The cost of each vertex is the priority
+//    PriorityQueue<RoadNode*> frontier;
+//    frontier.enqueue(start,0);
+//    // keep track of nodes that have already been visited.
+//    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
+//    came_from.put(start,NULL);
+//    // keep track of the cost to reach this vertext
+//    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
+//    cost_so_far.put(start,0);
+//    while(!frontier.isEmpty()) {
+//        auto visiting = frontier.dequeue();
+//        visiting->setColor(Color::GREEN);
+//        if (visiting == end) break;
+//        for(auto& next : graph.neighborsOf(visiting)) {
+//            RoadEdge* between = graph.edgeBetween(visiting,next);
+//            double new_cost = cost_so_far[visiting]+ between->cost();
+//            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
+//                cost_so_far.put(next,new_cost);
+//                frontier.enqueue(next,new_cost);
+//                next->setColor(Color::YELLOW);
+//                came_from.put(next,visiting);
+//            }
+//        }
+//    }
 
-    // Reconstruct paths, if no path found, came_from do not contains key[end]
-    auto visiting = end;
-    if (came_from.containsKey(visiting)) {
-        while(true){
-            path.insert(0,visiting);
-            if (visiting == start) break;
-            visiting = came_from[visiting];
-        }
-    }
-    return path;
+//    // Reconstruct paths, if no path found, came_from do not contains key[end]
+//    auto visiting = end;
+//    if (came_from.containsKey(visiting)) {
+//        while(true){
+//            path.insert(0,visiting);
+//            if (visiting == start) break;
+//            visiting = came_from[visiting];
+//        }
+//    }
+//    return path;
 
 }
 
 Path aStar(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
-    start->setColor(Color::YELLOW);
-    Vector<RoadNode*> path = Vector<RoadNode*>();
-    if (start==end) {
-        path.add(start);
-        return path;
-    }
-    // The cost of each vertex is the priority
-    PriorityQueue<RoadNode*> frontier;
-    frontier.enqueue(start,0);
-    // keep track of nodes that have already been visited.
-    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
-    came_from.put(start,NULL);
-    // keep track of the cost to reach this vertext
-    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
-    cost_so_far.put(start,0);
-    while(!frontier.isEmpty()) {
-        auto visiting = frontier.dequeue();
-        visiting->setColor(Color::GREEN);
-        if (visiting == end) break;
-        for(auto& next : graph.neighborsOf(visiting)) {
-            RoadEdge* between = graph.edgeBetween(visiting,next);
-            double Heuristic = graph.crowFlyDistanceBetween(next,end)/graph.maxRoadSpeed();
-            double new_cost = cost_so_far[visiting]+ between->cost();
-            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
-                cost_so_far.put(next,new_cost);
-                frontier.enqueue(next,new_cost+Heuristic);
-                next->setColor(Color::YELLOW);
-                came_from.put(next,visiting);
-            }
-        }
-    }
+    return generalFind(graph, start, end, true);
+//    start->setColor(Color::YELLOW);
+//    Vector<RoadNode*> path = Vector<RoadNode*>();
+//    if (start==end) {
+//        path.add(start);
+//        return path;
+//    }
+//    // The cost of each vertex is the priority
+//    PriorityQueue<RoadNode*> frontier;
+//    frontier.enqueue(start,0);
+//    // keep track of nodes that have already been visited.
+//    Map<RoadNode*,RoadNode*> came_from = Map<RoadNode*,RoadNode*>();
+//    came_from.put(start,NULL);
+//    // keep track of the cost to reach this vertext
+//    Map<RoadNode*,double> cost_so_far = Map<RoadNode*,double>();
+//    cost_so_far.put(start,0);
+//    while(!frontier.isEmpty()) {
+//        auto visiting = frontier.dequeue();
+//        visiting->setColor(Color::GREEN);
+//        if (visiting == end) break;
+//        for(auto& next : graph.neighborsOf(visiting)) {
+//            RoadEdge* between = graph.edgeBetween(visiting,next);
+//            double Heuristic = graph.crowFlyDistanceBetween(next,end)/graph.maxRoadSpeed();
+//            double new_cost = cost_so_far[visiting]+ between->cost();
+//            if (!cost_so_far.containsKey(next) || cost_so_far[next]>new_cost){
+//                cost_so_far.put(next,new_cost);
+//                frontier.enqueue(next,new_cost+Heuristic);
+//                next->setColor(Color::YELLOW);
+//                came_from.put(next,visiting);
+//            }
+//        }
+//    }
 
-    // Reconstruct paths, if no path found, came_from do not contains key[end]
-    auto visiting = end;
-    if (came_from.containsKey(visiting)) {
-        while(true){
-            path.insert(0,visiting);
-            if (visiting == start) break;
-            visiting = came_from[visiting];
-        }
-    }
-    return path;
+//    // Reconstruct paths, if no path found, came_from do not contains key[end]
+//    auto visiting = end;
+//    if (came_from.containsKey(visiting)) {
+//        while(true){
+//            path.insert(0,visiting);
+//            if (visiting == start) break;
+//            visiting = came_from[visiting];
+//        }
+//    }
+//    return path;
 }
 
 Path alternativeRoute(const RoadGraph& graph, RoadNode* start, RoadNode* end) {
