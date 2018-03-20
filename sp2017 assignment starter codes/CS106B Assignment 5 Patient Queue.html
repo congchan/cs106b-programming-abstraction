@@ -1,0 +1,1120 @@
+
+<!-- saved from url=(0061)http://web.stanford.edu/class/cs106b//assn/patient-queue.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<link href="./CS106B Assignment 5 Patient Queue_files/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./CS106B Assignment 5 Patient Queue_files/style.css">
+
+<!-- Java Script -->
+<script async="" src="./CS106B Assignment 5 Patient Queue_files/analytics.js.下载"></script><script src="./CS106B Assignment 5 Patient Queue_files/jquery.min.js.下载"></script>
+<script src="./CS106B Assignment 5 Patient Queue_files/moment.min.js.下载"></script>
+<script src="./CS106B Assignment 5 Patient Queue_files/bootstrap.min.js.下载"></script>
+<script src="./CS106B Assignment 5 Patient Queue_files/ace.js.下载" type="text/javascript"></script><style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction: ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;/* setting pointer-events: auto; on node under the mouse, which changesduring scroll, will break mouse wheel scrolling in Safari */pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}/*** Dark version for fold widgets*/.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<script src="./CS106B Assignment 5 Patient Queue_files/specialfx.js.下载" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href="./CS106B Assignment 5 Patient Queue_files/css" rel="stylesheet" type="text/css">
+<link href="./CS106B Assignment 5 Patient Queue_files/css(1)" rel="stylesheet" type="text/css">
+
+</head>
+<body onload="SpecialEffects.setupClickToShowAreas()">
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="http://web.stanford.edu/class/cs106b/">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/4-Strings/">4 Strings</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/7-IntroToRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/9-RecursiveBacktracking1/">9 Recursive Backtracking 1</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/10-RecursiveBacktracking2/">10 Recursive Backtracking 2</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/11-Sorting/">11 Sorting</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/12-Memoization/">12 Memoization</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/13-Classes/">13 Classes</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/14-Pointers/">14 Pointers</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/15-DynamicAllocation/">15 DynamicAllocation</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/16-LinkedLists/">16 Linked Lists</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/18-BinaryHeaps/">18 Binary Heaps</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/20-BinarySearchTrees/">20 Binary Search Trees</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/21-Graphs/">21 Graphs</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/23-GraphsII/">23 Graphs II</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/24-BFS_DFS/">24 Breadth First Search and Depth First Search</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/25-Dijkstra_AStar/">25 Dijkstra and A*</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/26-EsotericDataStructures/">26 Esoteric Data Structures</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/27-Inheritance/">27 C++ Inheritance and Polymorphism</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/28-LastClass/">28 Last Class</a></li>
+            <!--
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">10 - Final</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106b//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/life.html">1 - Game of Life</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b/assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/recursion.html">3 - Recursion</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/boggle.html">4 - Boggle!</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html">5 - Patient Queue</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html">7 - Trailblazer</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section01.pdf">Section 01</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section01-solutions.pdf">Section 01 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section02.pdf">Section 02</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section02-solutions.pdf">Section 02 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section03.pdf">Section 03</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section03-solutions.pdf">Section 03 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section04.pdf">Section 04</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section04-solutions.pdf">Section 04 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section05.pdf">Section 05</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section05-solutions.pdf">Section 05 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section06.pdf">Section 06</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section06-solutions.pdf">Section 06 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section07.pdf">Section 07</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section07-solutions.pdf">Section 07 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section08.pdf">Section 08</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section08-solutions.pdf">Section 08 Solution</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09.pdf">Section 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09-solutions.pdf">Section 09 Solution</a></li>
+              -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=2">Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=2">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=2">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=2">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">YEAH <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/life/yeah_life.pdf">1 - Game of Life</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/adts/yeah_adts.pdf">2 - Serafini / ADTs</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/recursion/yeah_recursion.pdf">3 - Recursion</a></li>
+	          <li><a href="http://web.stanford.edu/class/cs106b//yeah/pqueue/yeah_pqueue.pdf">5 - PatientQueue</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/huffman/yeah_huffman.pdf">6 - Huffman</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/trailblazer/yeah_trailblazer.pdf">7 - Trailblazer (Slides)</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/trailblazer/yeah_trailblazer_code.zip">7 - Trailblazer (Code)</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/overview.html">Course Overview</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://web.stanford.edu/class/cs106b//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 5: Patient Queue 
+					</h1>
+
+					<p>
+	Assignment by Chris Gregg and Anton Apostolatos, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Jerry Cain.
+					</p><p class="subtleHeading">
+						May 11, 2017
+				</p></div>
+				<hr>
+			</div>
+		</div>
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Due Date:</h2>
+                                <p><b>The patient queue assignment is due Thursday, May 18th at 12:00pm.</b></p>
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Outline:</h2>
+                                <ul class="documentoutline" style="font-size:175%;">
+                                    <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#description">Description</a></li>
+                                    <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#implementation">Implementation</a></li>
+                                    <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#style">Style</a></li>
+                                    <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#faq">FAQ</a></li>
+                                    <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#extrafeatures">Extras</a></li>
+                                </ul>
+
+<p>
+	This problem focuses on implementing a priority queue using a Vector 
+        and also implementing a priority queue using a singly-linked list.
+</p>
+
+<p class="pairprogrammingno">
+	In the problem, you will implement a collection called a 
+        <em>priority queue</em> in two
+        different ways: using a Stanford Library Vector and a linked-list. As an
+        extension, you can also implement a priority queue using a heap (note:
+        most priority queues are implemented as a heap).
+	This problem focuses on linked lists and pointers, along with 
+        classes and objects.
+	This is an <strong>pair programming assignment</strong>.
+	You may choose to work in a pair/group on this program.
+</p>
+
+<p>
+</p>
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/cs106b-hw5-priority-queue-starter-files.zip">
+			<img src="./CS106B Assignment 5 Patient Queue_files/icon48-zip.gif" class="largeicon" alt="icon"><br>
+			Project Starter ZIP</a> <br>
+			(open <span class="filename">PatientQueue.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="./CS106B Assignment 5 Patient Queue_files/icon48-paperless.gif" class="largeicon" alt="icon"><br>
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_cpp.gif" class="icon" alt="icon">
+				<span class="filename">VectorPatientQueue.cpp</span>
+			</li>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_h.gif" class="icon" alt="icon">
+				<span class="filename">VectorPatientQueue.h</span>
+			</li>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_cpp.gif" class="icon" alt="icon">
+				<span class="filename">LinkedListPatientqueue.cpp</span>
+			</li>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_h.gif" class="icon" alt="icon">
+				<span class="filename">LinkedListPatientqueue.h</span>
+			</li>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_cpp.gif" class="icon" alt="icon">
+				<span class="filename">HeapPatientQueue.cpp</span> (extension only)
+			</li>
+			<li>
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon_h.gif" class="icon" alt="icon">
+				<span class="filename">HeapPatientQueue.h</span> (extension only)
+			</li>
+		</ul>
+	</div>
+
+<!-- 	<div class="largefilebox">
+		<a href="//web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/cs106b-hw5-priority-queue-demo.jar">
+			<img src="//web.stanford.edu/class/cs106b/img/marty/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+	</div>
+ -->
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="./CS106B Assignment 5 Patient Queue_files/icon48-txt.gif" class="largeicon" alt="icon"><br>
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/pqueue_output/output1.txt"><img class="icon" src="./CS106B Assignment 5 Patient Queue_files/icon_txt.gif" alt="icon"> output #1</a></li>
+		</ul>
+        <ul class="filelist">
+            <li><a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/pqueue_output/output2.txt"><img class="icon" src="./CS106B Assignment 5 Patient Queue_files/icon_txt.gif" alt="icon"> output #2</a></li>
+        </ul>
+        <ul class="filelist">
+            <li><a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/pqueue_output/output3.txt"><img class="icon" src="./CS106B Assignment 5 Patient Queue_files/icon_txt.gif" alt="icon"> output #3</a></li>
+        </ul>
+        <ul class="filelist">
+            <li><a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/pqueue_output/output4.txt"><img class="icon" src="./CS106B Assignment 5 Patient Queue_files/icon_txt.gif" alt="icon"> output #4</a></li>
+        </ul>
+        <ul class="filelist">
+            <li><a href="http://web.stanford.edu/class/cs106b/assnFiles/linked-lists-heaps/pqueue_output/output5.txt"><img class="icon" src="./CS106B Assignment 5 Patient Queue_files/icon_txt.gif" alt="icon"> output #5</a></li>
+        </ul>
+
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	In this problem you will write a <code>PatientQueue</code> class that manages a waiting line of patients to be processed at a hospital.
+</p>
+
+<p>
+	In this class we have learned about queues that process elements in a first-in, first-out (FIFO) order.
+	But FIFO is not the best order to assist patients in a hospital, because some patients have more urgent and critical injuries than others.
+	As each new patient checks in at the hospital, the staff assesses their injuries and gives that patient an integer <strong>priority</strong> rating, with smaller integers representing greater urgency.
+	(For example, a patient of priority 1 is more urgent and should receive care before a patient of priority 2.)
+</p>
+
+<p>
+	Once a doctor is ready to see a patient, the patient with the most 
+        urgent (smallest) priority is seen first.
+	That is, regardless of the order in which you add/enqueue the 
+        elements, when you remove/dequeue them, the one with the lowest 
+        priority number comes out first, then the second-smallest, and so on, 
+        with the largest priority item coming out last. Priority ties are
+        broken by first dequeuing the same-priority patients in the order
+        they were enqueued.
+	A queue that processes its elements in order of increasing priority 
+        like this is also called a <em>priority queue</em>.
+</p>
+<h2> Parts </h2>
+    There are <b>two</b> different classes to write for this assignment. 
+    The Vector and Linked-List implementations should have <b>identical</b> behavior.
+    If you choose to implement the optional heap extension, it is easier to make it 
+    slightly different (specifically: patients with the
+    same priority must be dequeued in the order they were enqueued, 
+    first-in-first-out,
+    in the Vector and Linked-List implementations, and this is not as easy in
+    a Heap implementation).
+    See below for a
+    description of each part of the assignment.
+<p>
+</p><h2>Overview of Patient Queues</h2>
+<p>
+    A priority queue stores a set of keys (priorities) and their associated
+    values. This assignment models a hospital waiting room as a priority
+   queue. 
+	If two patients in the queue have the same priority, you will break ties by choosing the patient who arrived earliest with that priority.
+	This means that if a patient arrives at priority <em>K</em> and there are already other patients in the queue with priority <em>K</em>, your new patient should be placed after them.
+</p>
+
+<p>
+	For example, if the following patients arrive at the hospital in this order:
+</p>
+
+<ul>
+	<li>
+		"Dolores" with priority 5
+	</li>
+	<li>
+		"Bernard" with priority 4
+	</li>
+	<li>
+		"Arnold" with priority 8
+	</li>
+	<li>
+		"William" with priority 5
+	</li>
+	<li>
+		"Teddy" with priority 5
+	</li>
+	<li>
+		"Ford" with priority 2
+	</li>
+</ul>
+
+<p>
+	Then if you were to dequeue the patients to process them, they would come out in this order:
+	Ford, Bernard, Dolores, William, Teddy, Arnold.
+</p>
+<h2 id="implementation">Implementation Details for both Classes:</h2>
+
+<p>
+	Internally a given implementation of a priority queue can store its elements in sorted or unsorted order; all that matters is that when the elements are dequeued, they come out in sorted order by priority.
+	This difference between the external expected behavior of the priority queue and its true internal state can lead to interesting differences in implementation, which you will find while completing this assignment.
+</p>
+
+<p>
+You will write a <code>VectorPatientQueue</code> class that uses an <b>un-sorted</b> Vector and
+you will write a second class, <code>LinkedListPatientQueue</code>
+that uses a <b>sorted</b> linked list as its internal data storage.
+</p>
+
+<p>
+	We supply you with a <code>PatientNode</code> structure (in <span class="filename">patientnode.h</span>/<span class="filename">cpp</span>) that is a small structure representing a single node of the linked list.
+	Each <code>PatientNode</code> stores a string value and integer priority
+        in it, and a pointer to a next node.
+	In the linked-list implementaiton, you should use this structure to 
+        store the elements of your queue along with their priorities.
+        In the Vector Patient Queue, you should probably write your own struct
+        to hold the priorities and elements, and we strongly suggest that you
+        also define an integer "timestamp" parameter that simply increments every time
+        a value is added to the queue. The reason for the timestamp parameter
+        is to enable you to differentiate between patients with the same
+        priority who come in at different times -- in an unsorted list, 
+        you need to have the ability to determine who came in first, and
+        a timestamp is a good way to do that. For the linked list implementation,
+        you won't need a timestamp because the list will be sorted, and
+        patients with the same priority will be sorted in the order in which
+        they arrived.
+</p>
+The following is the PatientNode struct (used in the LinkedListPatientQueue class):
+<pre class="cpp">struct PatientNode {
+    string name;
+    int priority;
+    PatientNode* next;
+
+    <span class="comment">// constructor - each parameter is optional</span>
+    PatientNode(string name, int priority, PatientNode* next);
+    ...
+};
+</pre>
+<em>Note: all of the XPatientQueue classes have an addition ": public PatientQueue"
+    designator in the header files. This is called "inheritance" and is beyond
+    the scope of cs106b -- we are using it to test your various Patient Queue
+    classes in hospital.cpp. Feel free to ask about inheritance during office
+    hours or on Piazza, but you do not need to concern yourself with it for
+    this assignment.</em>
+<h3 id="patientqueue">PatientQueue Operations:</h3>
+
+<p>
+	Your class must support all of the following operations.
+	For the linked-list implementation, each member must run within the 
+        Big-Oh runtime noted; the <em>N</em> 
+        in this context means the length of the linked list.
+</p>
+
+<table class="methodtable">
+	<tbody><tr>
+		<th>Member Name</th>
+		<th>Description</th>
+		<th>Vector Big-Oh</th>
+        <th>LinkedList Big-Oh</th>
+	</tr>
+
+	<tr>
+		<td><code>PatientQueue()</code></td>
+		<td>In this parameterless constructor you should initialize a new empty queue (with a null front for your internal linked list, and an empty Vector for your Vector class).</td>
+		<td>O(1)</td>
+        <td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code>~PatientQueue()</code></td>
+		<td>In this destructor you must free up any memory used -- for example, your
+                    linked list nodes (you may not need to do anything in your
+                    destructor for your Vector class).</td>
+        <td>O(1)</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.newPatient(<var>name</var>, <var>priority</var>);</code></td>
+		<td>
+			In this function you should add the given person into your patient queue with the given priority.
+			Duplicate names and priorities are allowed.
+			Any string is a legal value, and any integer is a legal priority; there are no invalid values that can be passed.
+		</td>
+        <td>O(1)</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.processPatient()</code></td>
+		<td>
+			In this function you should remove the patient with the most urgent priority from your queue, and you should also return their name as a string.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+        <td>O(<em>N</em>)</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.frontName()</code></td>
+		<td>
+			In this function you should return the name of the most urgent patient (the person in the front of your patient queue),
+			without removing it or altering the state of the queue.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+        <td>O(<em>N</em>)</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.frontPriority()</code></td>
+		<td>
+			In this function you should return the integer priority of the most urgent patient (the person in the front of your patient queue),
+			without removing it or altering the state of the queue.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+        <td>O(<em>N</em>)</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.upgradePatient(<var>name</var>, <var>newPriority</var>);</code></td>
+		<td>
+			In this function you will modify the priority of a given existing patient in the queue.
+			The intent is to change the patient's priority to be more urgent (a smaller integer) than its current value, perhaps because the patient's condition has gotten worse.
+			If the given patient is present in the queue and already has a more urgent priority than the given new priority, or if the given patient is not already in the queue, your function should throw a string <strong>exception</strong>.
+			If the given patient name occurs multiple times in the queue, you should alter the priority of the highest priority person with that name that was placed into the queue.
+		</td>
+        <td>O(<em>N</em>)</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.isEmpty()</code></td>
+		<td>
+			In this function you should return <code>true</code> if your patient queue does not contain any elements and <code>false</code> if it does contain at least one patient.
+		</td>
+		<td>O(1)</td>
+        <td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.clear();</code></td>
+		<td>In this function you should remove all elements from the patient queue, freeing memory for all nodes that are removed.</td>
+		<td>O(1)</td>
+        <td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>toString()</var></code></td>
+		<td>
+                    You should write a <code>toString()</code> function for printing your patient queue to the console.
+                    The function should return a string as defined as follows: 
+			The elements should be printed out in front-to-back order and must be in the form of <em>priority</em>:<em>value</em> with <code>{}</code> braces and separated by a comma and space, such as:
+			<code>{2:Ford, 4:Bernard, 5:Dolores, 5:William, 5:Teddy, 8:Arnold}</code>
+			The <code>PatientNode</code> structure has a <code>&lt;&lt;</code> operator that may be useful to you.
+			Your formatting and spacing should match exactly.
+			Do not place a <code>\n</code> or <code>endl</code> at the end of your output.
+                        <em>Note: you only have to format the string in priority
+                            order for the linked list code and it can be in any
+                            order for your Vector code.</em>
+		</td>
+		<td>O(<em>N</em>)</td>
+        <td>O(<em>N</em>)</td>
+	</tr>
+</tbody></table>
+<div class="caption">members you must write in <code>PatientQueue</code> class</div>
+
+<p>
+	The headers of every member must match those specified above.
+	Do not change the parameters or function names.
+</p>
+
+<p>
+	<em>Constructor/destructor:</em>
+	Your class must define a parameterless constructor.
+	Since your linked-list implementation allocates dynamic memory (using <code>new</code>), you must ensure that there are no memory leaks by freeing any such allocated memory at the appropriate time.
+	This will mean that you will need a destructor to free the memory for all of your nodes.
+</p>
+
+<p>
+	<em>Helper functions:</em>
+	The members listed on the previous page represent your class's required behavior.
+	But you may add other member functions to help you implement all of the appropriate behavior.
+	Any other member functions you provide must be <code>private</code>.
+	Remember that each member function of your class should have a clear, coherent purpose.
+	You should provide private helper members for common repeated operations.
+</p>
+
+<p>
+	You will also need to do the following:
+</p>
+
+
+<p>
+	<strong>Add descriptive comments to <span class="filename">LinkedListPatientQueue.h/cpp</span> and <span class="filename">VectorPatientQueue.h/cpp</span>.</strong>
+	All files should have top-of-file headers; one file should have header comments atop each member function, either the .h or .cpp; and the .cpp should have internal comments describing the details of each function's implementation.
+</p>
+
+<p>
+	<strong>Declare your necessary private member variable in <span class="filename">PatientQueue.h</span>, along with any private member functions you want to help you implement the required public behavior.</strong>
+	Your inner data storage <em>must</em> be a singly linked list of patient nodes; do not use any other collections or data structures in any part of your code.
+</p>
+
+<p>
+	<strong>Implement the bodies of all member functions and constructors in <span class="filename">PatientQueue.cpp</span>.</strong>
+</p>
+
+<p>
+	As stated previously, the elements of the patient queue are stored in <strong>sorted order</strong> internally.
+	As new elements are enqueued, you should add them at the appropriate
+        place in the vector or linked list so as to maintain the sorted order.
+	The primary benefit of this implementation is that when dequeuing, you 
+        do not need to search the vector or linked list to find the element 
+        with most urgent priority to remove/return it.
+	Enqueuing new patients is slower, because you must search for the 
+        proper place to enqueue them, but dequeuing a patient to process them 
+        is very fast, because they are at the front of the or Vector list.
+</p>
+
+<h2>Vector Implementation</h2>
+<p>
+        Your class will use an unsorted Stanford Vector to hold the queue of
+        patients. Because the Vector is unsorted, you will need to traverse
+        the list to find the element with the smallest element, which is,
+        notably, inefficient.
+</p>
+<p>
+        You should create a struct inside the VectorPatientQueue.h file
+        that holds a patient name and a priority, and it should also
+        hold an integer timestamp for breaking ties. This timestamp can
+        be based on an incrementing counter elsewhere in your class,
+        and every time a patient is enqueued you can update the
+        timestamp and add it to the patient's struct.
+</p>
+<p>
+        Do not overthink the Vector patient queue -- this should be a relatively
+        straightforward part of the project so you can get used to the idea of
+        a priority queue.
+</p>
+<h2>Linked List Implementation</h2>
+	Your class will use a singly <strong>linked list</strong> as its internal data storage.
+	The elements of the linked list are stored in <strong>sorted order</strong> internally.
+	As new elements are enqueued, you should add them at the appropriate place in the linked list so as to maintain the sorted order.
+	The primary benefit of this implementation is that when removing a patient to process them, you do not need to search the linked list to find the smallest element and remove/return it; it is always at the front of the list.  Enqueuing is slower, because you must search for the proper place to enqueue new elements, but dequeue/peeking and general overall performance are fairly good.
+<p></p>
+<p>
+	The following is a diagram of the internal linked list state of a <code>PatientQueue</code> after enqueuing the elements listed previously:
+</p>
+
+<pre style="font-size:90%;">front -&gt; {2:Ford} -&gt; {4:Bernard} -&gt; {5:Dolores} -&gt; {5:William} -&gt; {5:Teddy} -&gt; {8:Arnold}
+</pre>
+
+<p>
+	A tricky part of this implementation is <strong>inserting a new node</strong> in the proper place when a new patient arrives.
+	You must look for the proper insertion point by finding the last element whose priority is at least as large as the new value to insert.
+	Remember that, as shown in class, you must often stop one node early so that you can adjust the next pointer of the preceding node.
+	For example, if you were going to insert the value "Stubbs" with priority 5 into the list shown above, your code should iterate until you have a pointer to the node for "Teddy", as shown below:
+</p>
+
+<pre style="font-size:90%;">front -&gt; {2:Ford} -&gt; {4:Bernard} -&gt; {5:Dolores} -&gt; {5:William} -&gt; {5:Teddy} -&gt; {8:Arnold}
+                                                                   ^
+                                                                   |
+                                                        current ---+
+</pre>
+
+<p>
+	Once the <code>current</code> pointer shown above points to the right location, you can insert the new node as shown below:
+</p>
+
+<pre style="font-size:90%;">front -&gt; {2:Ford} -&gt; {4:Bernard} -&gt; {5:Dolores} -&gt; {5:William} -&gt; {5:Teddy}       {8:Arnold}
+                                                                   ^      |        ^
+                                                                   |      v        |
+                                                        current ---+      <ins>{5:Stubbs}</ins>
+</pre>
+
+
+
+<p>
+	Here are a few other constraints we expect you to follow in your implementation:
+</p>
+
+<p>
+	You should not make unnecessary passes over the linked list.
+	For example, when enqueuing an element, a poor implementation would be to traverse the entire list once to count its size and to find the proper index at which to insert, and then make a second traversal to get back to that spot and add the new element.
+	Do not make such multiple passes.
+	Also, keep in mind that your queue class is not allowed to store an integer size member variable; you must use the presence of a null <code>next</code> pointer to figure out where the end of the list is and how long it is.
+</p>
+
+<p>
+	Duplicate patient names and priorities are allowed in your queue.
+	For example, the <code>upgradePatient</code> operation should affect only a single occurrence of a patient's name (the one with lowest priority).
+	If there are other occurrences of that same value in the queue, a single call to <code>upgradePatient</code> shouldn't affect them all.
+</p>
+
+<p>
+	You are <u>not</u> allowed to use a <code>sort</code> function or library to arrange the elements of your list, nor are you allowed to create any temporary or auxiliary data structures anywhere in your code.
+	You must implement all behavior using only the one linked list of nodes as specified.
+</p>
+
+<p>
+	You will need pointers for several of your implementations, but you should not use pointers-to-pointers (for example, <code>PatientNode**</code>).
+	If you like, you are allowed to use a reference to a pointer (e.g. <code>PQNode*&amp;</code>).
+</p>
+
+<p>
+	You should not create any more <code>PatientNode</code> objects than necessary.
+	For example, if a <code>PatientQueue</code> contains 6 elements, there should be exactly 6 <code>PatientNode</code> objects in its internal linked list; no more, no less.
+	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker,
+	nor should you create a <code>new PatientNode</code> that is just thrown away or discarded without being used as part of the linked list.
+	You can declare as many local variable pointers to <code>PatientNode</code>s as you like.
+</p>
+
+
+
+
+
+
+<h2 id="hints">Development Strategy and Hints:</h2>
+
+<p>
+	<em>Draw pictures:</em>
+	When manipulating linked lists, it is often helpful to draw pictures of the linked list before, during, and after each of the operations you perform on it.
+	Manipulating linked lists can be tricky, but if you have a picture in front of you as you're coding it can make your job substantially easier.
+</p>
+
+<p>
+	<em>List states:</em>
+	When processing a linked list, you should consider the following states and transitions between them in your code as you add and remove elements.
+	You should also, for each state below, think about the effect of adding a node in the front, middle, and back of the list.
+</p>
+
+<table class="methodtable">
+	<tbody><tr>
+		<th>zero nodes</th>
+		<td>
+			<pre>front /
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>one node</th>
+		<td>
+			<pre>          +---+---+
+front --&gt; | ? | / |
+          +---+---+
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>N nodes</th>
+		<td>
+			<pre>          +---+---+     +---+---+        +---+---+    +---+---+
+front --&gt; | ? |   | --&gt; | ? |   |--&gt; ... | ? |   |--&gt; | ? | / |
+          +---+---+     +---+---+        +---+---+    +---+---+
+</pre>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Heap Implementation (optional extension)</h2>
+The third priority queue implementation you may optionally write uses a special
+array structure called a binary heap as its internal data storage. 
+The only private member variables this class is allowed to have inside it 
+are a pointer to your internal array of elements, and integers for the 
+array's capacity and the priority queue's size.<p></p>
+
+				<p>
+					As discussed in <!--<a href="//web.stanford.edu/class/cs106b/lectures/18-PriorityQueues/">-->lecture<!--</a>-->, a binary heap is an unfilled array that maintains a "heap ordering" property where each index i is thought of as having two "child" indexes, i * 2 and i * 2 + 1, and where the elements must be arranged such that "parent" indexes always store more urgent priorities than their "child" indexes. To simplify the index math, we will leave index 0 blank and start the data at an overall parent "root" or "start" index of 1. One very desirable property of a binary heap is that the most urgent-priority element (the one that should be returned from a call to peek or dequeue) is always at the start of the data in index 1. For example, the six elements listed in the previous pages could be put into a binary heap as follows. Notice that the most urgent element, "t":2, is stored at the root index of 1.
+				</p>
+				<p>
+					</p><pre>index     0       1       2       3       4       5       6       7       8       9 
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+ 
+value |       | "t":2 | "m":5 | "b":4 | "x":5 | "q":5 | "a":8 |       |       |       | 
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+size = 6 
+capacity = 10</pre>
+				<p></p>
+
+				<p>
+					As discussed in lecture, adding (enqueuing) a new element into a heap involves placing it into the first empty index (7, in this case) and then "bubbling up" or "percolating up" by swapping it with its parent index (i/2) so long as it has a more urgent (lower) priority than its parent. We use integer division, so the parent of index 7 = 7/2 = 3. For example, if we added "y" with priority 3, it would first be placed into index 7, then swapped with "b":4 from index 3 because its priority of 3 is less than b's priority of 4. It would not swap any further because its new parent, "t":2 in index 1, has a lower priority than y. So the final heap array contents after adding "y":3 would be:
+				</p>
+
+				<p>
+					</p><pre>index     0       1       2       3       4       5       6       7       8       9 
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+ 
+value |       | "t":2 | "m":5 | <b style="color:red">"y":3</b> | "x":5 | "q":5 | "a":8 | <b style="color:red">"b":4</b> |       |       |
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+size = <b style="color:red">7</b> 
+capacity = 10</pre>
+				<p></p>
+
+				<p>
+					Removing (dequeuing) the most urgent element from a heap involves moving the element from the last occupied index (7, in this case) all the way up to the "root" or "start" index of 1, replacing the root that was there before; and then "bubbling down" or "percolating down" by swapping it with its more urgent-priority child index (i*2 or i*2+1) so long as it has a less urgent (higher) priority than its child. For example, if we removed "t":2, we would first swap up the element "b":4 from index 7 to index 1, then bubble it down by swapping it with its more urgent child, "y":3 because the child's priority of 3 is less than b's priority of 4. It would not swap any further because its new only child, "a":8 in index 6, has a higher priority than b. So the final heap array contents after removing "t":2 would be:
+				</p>
+
+				<p>
+					</p><pre>index     0       1       2       3       4       5       6       7       8       9 
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+ 
+value |       | <b style="color:red">"y":3</b> | "m":5 | <b style="color:red">"b":4</b> | "x":5 | "q":5 | "a":8 |       |       |       |
+      +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+size = <b style="color:red">6</b> 
+capacity = 10</pre>
+				<p></p>
+
+				<p>
+					A key benefit of using a binary heap to represent a priority queue is efficiency. The common operations of enqueue and dequeue take only O(log N) time to perform, since the "bubbling" jumps by powers of 2 every time. The peek operation takes only O(1) time since the most urgent-priority element's location is always at index 1.
+				</p>
+
+				<p>
+					If nodes ever have a tie in priority, break ties by comparing the strings themselves, treating strings that come earlier in the alphabet as being more urgent (e.g. "a" before "b"). Compare strings using the standard relational operators like &lt;,&lt;=,&gt;,&gt;=,==,and!=. Donotmakeassumptionsaboutthelengthsofthestrings.
+				</p>
+
+				<p>
+					Changing the priority of an existing value involves looping over the heap to find that value, then once you find it, setting its new priority and "bubbling up" that value from its present location, somewhat like an enqueue operation.
+				</p>
+
+				<p>
+					For both array and heap PQs, when the array becomes full and has no more available indexes to store data, you must resize it to a larger array. Your larger array should be a multiple of the old array size, such as double the size. You must not leak memory; free all dynamically allocated arrays created by your class.
+				</p>
+
+				<p>
+					Remember to include the big-O of enqueue and dequeue in the comments in <code>HeapPriorityQueue.h</code>.
+				</p>
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="http://web.stanford.edu/class/cs106b/styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1-4 specs, such as the ones about good problem decomposition, parameters, redundancy, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem.
+	(Some of these may seem overly strict or arbitrary, but we need to constrain the assignment to force you to properly practice pointers and linked lists as intended.)
+</p>
+
+<p>
+	<em>Commenting:</em>
+	Add descriptive comments to your .h and .cpp files.
+	Both files should have top-of-file headers.
+	One file should have header comments atop each member function (either the .h or .cpp; your choice).
+	The .cpp file should have internal comments describing the details of each function's implementation.
+</p>
+
+<p>
+	<em>Restrictions on pointers:</em>
+	The whole point of this assignment is to practice pointers and linked lists.
+	Therefore, do not declare or use any other <strong>collections</strong> in any part of your code; all data should be stored in your linked list of nodes.
+	There are some C++ "smart pointer" libraries that manage pointers and memory automatically, allocating and freeing memory as needed; you should not use any such libraries on this assignment.
+</p>
+
+<p>
+	<em>Restrictions on private member variables:</em>
+	As stated previously, the only member variable (a.k.a. instance variable; private variable; field) you are allowed to have is a <code>PatientNode*</code> pointer to the front of your list.
+	You may not have any other member variables.
+	Do not declare an <code>int</code> for the list size.
+	Do not declare members that are pointers to any other nodes in the list.
+	Do not declare any collections or data structures as members.
+</p>
+
+<p>
+	<em>Restrictions on modifying member function headers:</em>
+	Please do not make modifications to the <code>PatientQueue</code> class's public constructor or public member functions' names, parameter types, or return types.
+	Our client code should be able to call public member functions on your queue successfully without any modification.
+</p>
+
+<p>
+	<em>Restrictions on creation and usage of nodes:</em>
+	The only place in your code where you should be using the <code>new</code> keyword is in the <code>newPatient</code> function.
+	No other members should use <code>new</code> or create new nodes under any circumstances.
+	You also should not be modifying or swapping nodes' <code>name</code> values after they are added to the queue.
+	In other words, you should implement all of the linked list / patient queue operations like <code>upgradePatient</code> by manipulating node pointers, not by creating entirely new nodes and not by modifying "data" of existing nodes.
+</p>
+
+<p>
+	You also should not create any more <code>PatientNode</code> structures than necessary.
+	For example, if the client has called <code>newPatient</code> 6 times, your code should have created exactly 6 total <code>PatientNode</code> objects; no more, no less.
+	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker, and you shouldn't accidentally create a temporary node object that is lost or thrown away.
+	You can declare as many local variable <em>pointers</em> to nodes as you like.
+</p>
+
+<p>
+	<em>Restrictions on traversal of the list:</em>
+	Any function that modifies your linked list should do so by traversing across your linked list <u>a single time</u>, not multiple times.
+	For example, in functions like <code>newPatient</code>, do not make one traversal to find a node or place of interest and then a second traversal to manipulate/modify the list at that place.
+	Do the entire job in a single pass.
+</p>
+
+<p>
+	Do not traverse the list farther than you need to.
+	That is to say, once you have found the node of interest, do not unnecessarily process the rest of the list; break/return out of code as needed once the work is done.
+</p>
+
+<p>
+	<em>Avoiding memory leaks:</em>
+	This item is listed under Style even though it is technically a functional requirement, because memory leakage is not usually visible while a program is running.
+	To ensure that your class does not leak memory, you must delete all of the node objects in your linked list whenever data is removed or cleared from the list.
+	You must also properly implement a destructor that deletes the memory used by all of the linked list nodes inside your <code>PatientQueue</code> object.
+</p>
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html#"><strong>Patient Queue FAQ</strong> (click to show)</a><div class="faqarea clicktoshow" rel="Patient Queue FAQ" style="display: none;">
+[an error occurred while processing this directive]<dl>
+	<dt id="comparestrings">
+		Q: How do I compare strings to see which comes earlier in ABC order?
+	</dt>
+	<dd>
+		A: C++ string objects support the standard comparison operators like &lt;, &lt;=, &gt;, &gt;=, ==, and != .
+	</dd>
+
+	<dt id="outputlessthan">
+		Q: How can I implement <code>operator &lt;&lt;</code> for printing a priority queue?
+		It seems like the operator would need access to the private data inside of the priority queue object.
+	</dt>
+	<dd>
+		A: The <code>&lt;&lt;</code> operator in our assignment is declared with a special keyword called <code>friend</code> that makes it so that this operator is able to directly access the private data inside the priority queue if needed.
+	</dd>
+
+	<dt id="destructor">
+		Q: What am I supposed to do in a destructor?
+	</dt>
+	<dd>
+		A: Free up any dynamic memory that you previously allocated with the <code>new</code> keyword.
+	</dd>
+
+	<dt id="destructorvsclear">
+		Q: What is the difference between a destructor and the <code>clear</code> method?
+		Don't they do the same thing, deleting all elements from the queue?
+	</dt>
+	<dd>
+		A: A <code>clear</code> method is called explicitly when a client wants to wipe the elements and then start over and use the same list to store something else.
+		A destructor is called implicitly by C++ when an object is being thrown away forever; it won't ever be used to store anything else after that.
+		The implementations might be similar, but their external purpose is different.
+	</dd>
+
+	<dt id="changeprioritywhich">
+		Q: If I have an array priority queue storing {"a":1, "b":4, "b":1, "c":3}, and the client calls pq.changePriority("b", 2); , which "b" should I change? "b":4 or "b":1?
+	</dt>
+	<dd>
+		A: It should be the first occurrence you find when traversing the array from left-to-right.  So the "b":4 one is the one to change in that case.
+	</dd>
+
+	<dt id="PQNode">
+		Q: What is the difference between <code>PQNode</code> and <code>PQNode*</code> ?  Which one should I use?
+	</dt>
+	<dd>
+		A: You literally never want to create a variable of type <code>PQNode</code> ; you want only <code>PQNode*</code> .
+		The former is an object, the latter is a pointer to an object.
+		You always want pointers to <code>PQNode</code> objects in this assignment because objects created with <code>new</code> live longer; they are not cleaned up when the current function exits.
+	</dd>
+
+	<dt id="PQNodecreate">
+		Q: How do I declare a <code>PQNode</code>?
+	</dt>
+	<dd>
+		A: Since the linked list PQ needs to keep its memory around dynamically, you should use the <code>new</code> keyword.  Like this:
+
+<pre>PQNode* node = new PQNode();
+</pre>
+		
+		<p>
+			Or, you can pass any of the <code>value</code>, <code>priority</code>, and <code>next</code> values on construction:
+		</p>
+
+<pre>PQNode* node = new PQNode(<var>value</var>, <var>priority</var>, <var>next</var>);
+</pre>
+		
+		<p>
+			You *must* declare all your nodes as pointers; do not declare them as regular objects like the following code, because it will break when the list node goes out of scope:
+		</p>
+
+<pre>// do not do this!
+PQNode node;           // bad bad bad
+node.data = 42;        // bad bad bad
+node.next = nullptr;   // bad bad bad
+...
+</pre>
+	</dd>
+
+	<dt id="comparestrings">
+		Q: For the linked list PQ, how do I make sure that the strings stay in sorted order?
+	</dt>
+	<dd>
+		A: You have to do this yourself.
+		You can compare strings to each other using the standard comparison operators:
+		<code>&gt;=   =&lt;    &gt;    &lt;   ==    !=</code>
+	</dd>
+
+	<dt id="unexpectedlyfinish">
+		Q: Whenever I try to test my linked list PQ, the program "unexpectedly finishes."  Why?
+	</dt>
+	<dd>
+		A: This is a very common bug when using pointers.  It means you tried to dereference (-&gt;) a null pointer or garbage pointer.
+		Run the program in Debug Mode (F5) and find out the exact line number of the error.
+		Then trace through the code, draw pictures, and try to figure out how the pointer on that line could be NULL or garbage.
+		Often it involves something like checking a value like <code>current-&gt;next-&gt;data</code> before checking whether <code>current</code> or <code>current-&gt;next</code> are <code>NULL</code>.
+	</dd>
+
+	<dt id="deletefree">
+		Q: Is there a difference between "deleting" and "freeing" memory?
+	</dt>
+	<dd>
+		A: We use the terms somewhat interchangeably.
+		But what we mean is that you must call 'delete' on your dynamically allocated memory.
+		There is a function named 'free' in C++, but we don't want you to use that.
+	</dd>
+</dl>
+</div></div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	For this problem, most good extra feature ideas involve adding operations to your queue beyond those specified.
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Known list of diseases:</strong>
+		Instead of, or in addition to, asking for each new patient's priority, ask what illness or disease they have, and use that to initialize the priority of newly checked-in patients.
+		Then keep a table of known diseases and their respective priorities.
+		For example, if the patient says that they have the flu, maybe the priority is 5, but if they say they have a broken arm, the priority is 2.
+	</li>
+	<li>
+		<strong>Merge two queues:</strong>
+		Write a member function that accepts another patient queue of the same type and adds all of its elements into the current patient queue.
+		Do this merging "in place" as much as possible; for example, if you are merging two linked lists, directly connect the node pointers of one to the other as appropriate.
+	</li>
+	<li>
+		<strong>Deep Copy:</strong>
+		Make your queue properly support the <code>=</code> assignment statement, copy constructor, and deep copying.
+		Google about the C++ "Rule of Three" and follow that guideline in your implementation.
+	</li>
+	<li>
+		<strong>Iterator:</strong>
+		Write a class that implements the STL <code>iterator</code> type and <code>begin</code> and <code>end</code> member functions in your queue, which would enable "for-each" over your PQ.  This requires knowledge of the C++ STL library.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+	The linked-list class is only allowed to have a single private member variable 
+        inside it: a pointer to the front of your list (for the linked list implementation). Vector that holds the list (for the Vector implementation),
+        
+                        </div>
+                </div>
+		<div class="row" style="margin-bottom:25px">
+                        <div class="col-sm-12">
+			</div>
+		</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				© Stanford 2017 | Created by Chris Gregg.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+
+</body></html>

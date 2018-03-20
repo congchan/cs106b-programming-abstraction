@@ -1,0 +1,1058 @@
+
+<!-- saved from url=(0059)http://web.stanford.edu/class/cs106b//assn/trailblazer.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<link href="./CS106B Assignment 7 Trailblazer_files/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./CS106B Assignment 7 Trailblazer_files/style.css">
+
+<!-- Java Script -->
+<script async="" src="./CS106B Assignment 7 Trailblazer_files/analytics.js.下载"></script><script src="./CS106B Assignment 7 Trailblazer_files/jquery.min.js.下载"></script>
+<script src="./CS106B Assignment 7 Trailblazer_files/moment.min.js.下载"></script>
+<script src="./CS106B Assignment 7 Trailblazer_files/bootstrap.min.js.下载"></script>
+<script src="./CS106B Assignment 7 Trailblazer_files/ace.js.下载" type="text/javascript"></script><style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction: ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;/* setting pointer-events: auto; on node under the mouse, which changesduring scroll, will break mouse wheel scrolling in Safari */pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}/*** Dark version for fold widgets*/.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<script src="./CS106B Assignment 7 Trailblazer_files/specialfx.js.下载" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href="./CS106B Assignment 7 Trailblazer_files/css" rel="stylesheet" type="text/css">
+<link href="./CS106B Assignment 7 Trailblazer_files/css(1)" rel="stylesheet" type="text/css">
+
+	<script src="./CS106B Assignment 7 Trailblazer_files/math.min.js.下载"></script>
+	<script src="./CS106B Assignment 7 Trailblazer_files/MathJax.js.下载" id=""></script>
+	<script type="text/x-mathjax-config;executed=true">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="http://web.stanford.edu/class/cs106b/">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/4-Strings/">4 Strings</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/7-IntroToRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/9-RecursiveBacktracking1/">9 Recursive Backtracking 1</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/10-RecursiveBacktracking2/">10 Recursive Backtracking 2</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/11-Sorting/">11 Sorting</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/12-Memoization/">12 Memoization</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/13-Classes/">13 Classes</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/14-Pointers/">14 Pointers</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/15-DynamicAllocation/">15 DynamicAllocation</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/16-LinkedLists/">16 Linked Lists</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/18-BinaryHeaps/">18 Binary Heaps</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/20-BinarySearchTrees/">20 Binary Search Trees</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/21-Graphs/">21 Graphs</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/23-GraphsII/">23 Graphs II</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/24-BFS_DFS/">24 Breadth First Search and Depth First Search</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/25-Dijkstra_AStar/">25 Dijkstra and A*</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/26-EsotericDataStructures/">26 Esoteric Data Structures</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/27-Inheritance/">27 C++ Inheritance and Polymorphism</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//lectures/28-LastClass/">28 Last Class</a></li>
+            <!--
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">10 - Final</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106b//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/life.html">1 - Game of Life</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b/assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/recursion.html">3 - Recursion</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/boggle.html">4 - Boggle!</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/patient-queue.html">5 - Patient Queue</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html">7 - Trailblazer</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section01.pdf">Section 01</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section01-solutions.pdf">Section 01 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section02.pdf">Section 02</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section02-solutions.pdf">Section 02 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section03.pdf">Section 03</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section03-solutions.pdf">Section 03 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section04.pdf">Section 04</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section04-solutions.pdf">Section 04 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section05.pdf">Section 05</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section05-solutions.pdf">Section 05 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section06.pdf">Section 06</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section06-solutions.pdf">Section 06 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section07.pdf">Section 07</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section07-solutions.pdf">Section 07 Solution</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section08.pdf">Section 08</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//sections/section08-solutions.pdf">Section 08 Solution</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09.pdf">Section 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09-solutions.pdf">Section 09 Solution</a></li>
+              -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=2">Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=2">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=2">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=2">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">YEAH <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/life/yeah_life.pdf">1 - Game of Life</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/adts/yeah_adts.pdf">2 - Serafini / ADTs</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/recursion/yeah_recursion.pdf">3 - Recursion</a></li>
+	          <li><a href="http://web.stanford.edu/class/cs106b//yeah/pqueue/yeah_pqueue.pdf">5 - PatientQueue</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/huffman/yeah_huffman.pdf">6 - Huffman</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/trailblazer/yeah_trailblazer.pdf">7 - Trailblazer (Slides)</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//yeah/trailblazer/yeah_trailblazer_code.zip">7 - Trailblazer (Code)</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="http://web.stanford.edu/class/cs106b//assn/trailblazer.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/overview.html">Course Overview</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="http://web.stanford.edu/class/cs106b//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://web.stanford.edu/class/cs106b//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 7: Trailblazer
+					</h1>
+
+					<p>
+						Updated by Anton Apostolatos, Chris Gregg, Chris Piech and Keith Schwarz. Thanks to Julie Zelenski, Nick Parlante, Jerry Cain, Eric Roberts, Dawson Zhou, Leonid Shamis (UC Davis) and Marty Stepp.
+					</p>
+
+					<p class="subtleHeading">
+						March 10th, 2017
+					</p>
+
+					<div class="alert alert-success"><b>Note!</b> The maps that you will work on for this assignment use real world road map data! The Stanford, San Francisco and Istanbul maps are open source data provided by <a href="http://openstreetmaps.org/">openstreetmaps.org</a>.</div>
+					<!--<div class="alert alert-info" role="alert"><b>Coming Soon</b>: The handout will be up shortly!</div>-->
+					
+
+				</div>
+
+
+				<hr>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					</p><center>
+						<img style="width:80%" src="./CS106B Assignment 7 Trailblazer_files/splash.png">
+						<!--<p style="text-align:center; margin-bottom:15px"><i>PQueue</i></p>-->
+					</center>
+				<p></p>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-9">
+				<p>
+					This assignment focuses on graphs, specifically on searching for paths in a graph. You will write several path finding algorithms.
+				</p>
+
+				<!--<p>
+
+					A demo is availible as a JAR (see handout on how to <a href="//web.stanford.edu/class/cs106b/handouts/howToRunJar.html">run a jar</a>):
+				</p>-->
+				<p>
+					</p><div class="row">
+						<div class="col-xs-3">
+							<center>
+							<a href="http://web.stanford.edu/class/cs106b//assnFiles/trailblazer/cs106b-hw7-trailblazer-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br>
+					Starter Code</a>
+							</center>
+						</div>
+
+						<!--<div class="col-xs-3">
+							<center>
+							<a href="//web.stanford.edu/class/cs106b//assnFiles/trailblazer/cs106b-hw7-trailblazer-demo.jar"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Demo Jar</a>
+							</center>
+						</div>-->
+
+						<div class="col-xs-3">
+							<center>
+							<a href="http://web.stanford.edu/class/cs106b//assnFiles/trailblazer/output/"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br>
+					Expected Output</a>
+							</center>
+						</div>
+					</div>
+				<p></p>
+
+				
+
+				<p>
+					We provide you with several support files, but you should not modify them. Turn in the following files;
+					</p><ol>
+						<li><code>Trailblazer.cpp </code>, code to perform graph path searches</li>
+						<li><code>map-custom.txt</code>, a world map of your own creation.</li>
+						<li><code>map-custom.jpg</code>, a world map of your own creation.</li>
+					</ol>
+				<p></p>
+
+
+				<p>
+<strong>This is an individual assignment. Write your own solution and do not work in a pair/group on this program. </strong>
+				</p>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well info faq">
+					<b>Due Date:</b> Trailblazer is due Tuesday June 6th at 12:00pm (noon). <b> Note that you cannot use late days on this assignment. </b> 
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#overview&#39;).toggle()">
+						Overview
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="overview">
+					<p>
+						This program displays various road maps and allows users to find the shortest path between any two nodes. For example, if the user loaded the Stanford map and selected a node at the top of the Oval and another node at <a href="https://en.wikipedia.org/wiki/Stanford_University_student_housing#Governor.27s_Corner">FroSoCo</a>, your program should display the best route: 
+						
+					</p>
+
+					<p>
+						</p><center>
+							<img style="width:100%" src="./CS106B Assignment 7 Trailblazer_files/screenshot2.png">
+						</center>
+					<p></p>
+					<p>
+						If you click on any two nodes in the world, the program will find a path from the starting position to the ending position. As it does so, it will color the vertexes green and yellow based on the colors assigned to them by the algorithm. Once the path is found, the program will highlight it and display information about the path cost in the console. The user can select one of four path-searching algorithms in the top menu:
+					</p>
+					<ol>
+						
+						<li>Breadth-first search (BFS)</li>
+						<li>Dijkstra's algorithm</li>
+						<li>A* search</li>
+						<li>Alternative Route</li>
+					</ol>
+					<p></p>
+
+
+
+					<p>
+						The window contains several controls. You can load world maps by selecting them from the bottom drop-down menu and then clicking the "Load" button.
+					</p>
+					<p>
+						In your trailblazer.cpp file, you must write the following 4 functions for finding paths and creating mazes in a graph:
+					</p>
+<pre>Path breadthFirstSearch(RoadGraph&amp; graph, RoadNode* start, RoadNode* end)</pre> 
+<pre>Path dijkstrasAlgorithm(RoadGraph&amp; graph, RoadNode* start, RoadNode* end)</pre>
+<pre>Path aStar(RoadGraph&amp; graph, RoadNode* start, RoadNode* end)</pre>
+<pre>Path alternativeRoute(RoadGraph&amp; graph, RoadNode* start, RoadNode* end)</pre>
+					<p></p>
+
+					<p>
+						Each of the first three implements a path-searching algorithm taught in class. You should search the given graph for a path from the given start vertex to the given end vertex. If you find such a path, the path you return should be a list of all vertexes along that path, with the starting vertex first (index 0 of the vector) and the ending vertex last. </p>
+
+						<p>
+							A <code>Path</code> is a <a href="https://en.wikipedia.org/wiki/Typedef">typedef</a> of a <code>Vector&lt;RoadNode*&gt;</code>. It is an alias for the same exact type.
+					</p>
+
+					<p>
+						If no path is found, return an empty path. If the start and end vertexes are the same, return a one-element vector containing only that vertex. Though some graphs may be undirected (all edges go both ways), your code should not assume this. You may assume that the graph passed in is not corrupt.
+					</p>
+
+					<p>
+						Our provided main client program will allow you to test each algorithm one at a time before moving on to the next. You can add more functions as helpers if you like, particularly to remove redundancy between some algorithms containing similar code.
+					</p>
+
+					<p>
+						The road network world is represented by a RoadGraph, which is a thin wrapper around the BasicGraph we saw in class. Each vertex represents a specific location on the world.  An edge between two verticies means that there is a direct road between the two. The cost of the path is the time it takes to traverse that road. 
+					</p>
+
+					<p>Your algorithm should work on any RoadGraph instance, such as this map of <a href="https://en.wikipedia.org/wiki/Middle-earth">Middle Earth</a> that can help Frodo get from the Shire to Mount Doom:
+					</p><p>
+						</p><center>
+							<img style="width:100%" src="./CS106B Assignment 7 Trailblazer_files/screenshot3.png">
+						</center>
+					<p></p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#code&#39;).toggle()">
+						Provided Code
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="code">
+					<p>
+						We provide you with a lot of starter code for this assignment.  Here is a quick breakdown of what each file contains, though you do not need to examine or know about each file or its contents in order to complete the assignment.
+
+						</p><ol>
+							<li><code>Trailblazer.h/.cpp:</code> We provide a skeleton version of these files where you will write your path-searching code for the assignment.</li>
+							<li><code>RoadGraph.h/.cpp</code> Defines and implements the RoadGraph, RoadNode and RoadEdge classes</li>
+							<li><code>Color.h/.cpp</code> Constants representing colors of verticies</li>
+							<li><code>TrailblazerGUI.h/.cpp</code> The app's graphical user interface.</li>
+							<li><code>Main.cpp</code> The main function that initializes the GUI and launches the application.</li>
+							<li><code>WorldDisplay.h/.cpp</code> Hierarchy of types of world graphs.</li>
+						</ol>
+					<p></p>
+
+					<hr>
+
+					<h2>
+					<a>
+						RoadNode
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+					<p>
+						Each vertex in the graph is represented by an instance of the RoadNode structure, which has the following members:
+					</p>
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="" class="col-sm-4">RoadNode Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tbody><tr>
+								<td><code>string nodeName()</code></td>
+								<td>vertex's name, such as "r34c25" or "vertex17"</td>
+							</tr>
+							<tr>
+								<td><code>Point location()</code></td>
+								<td>returns the position of the node on the map</td>
+							</tr>
+							<tr>
+								<td><code>void setColor(Color c)</code></td>
+								<td>sets the color of the node in the display</td>
+							</tr>
+							<!--<tr>
+								<td><code>double cost</code></td>
+								<td>cost to reach this vertex (initially 0)</td>
+							</tr>-->
+
+							<!--<tr>
+								<td><code>bool visited</code></td>
+								<td>whether this vertex has been visited yet (initially false)</td>
+							</tr>
+							<tr>
+								<td><code>RoadNode* previous</code></td>
+								<td>pointer to a vertex that comes before this one; initially NULL</td>
+							</tr>-->
+
+							<!--<tr>
+								<td><code>Color getColor()</code></td>
+								<td>returns color you set previously using setColor; initially UNCOLORED</td>
+							</tr>-->
+							<!--<tr>
+								<td><code>void resetData()</code></td>
+								<td>sets cost, visited, previous, and color back to their initial values</td>
+							</tr>-->
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the vertex for debugging</td>
+							</tr>
+							
+						</tbody></table>
+					</p>
+
+					<p>
+						When you call setColor on a RoadNode, the GUI is automatically updated, the programs internal count of the number of verticies that you touch is increased, and a delay is added (so you can see your algorithm animate). All vertex colors are reset before each of your path-searching algorithms is called.
+					</p>
+
+					<hr>
+
+					<h2>
+					<a>
+						RoadEdge
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+
+					<p>
+						Each edge in the graph is represented by an instance of the RoadEdge structure, which has the following members:
+					</p>
+
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="">RoadEdge Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tbody><tr>
+								<td><code>RoadNode* from()</code></td>
+								<td>the starting vertex of this edge</td>
+							</tr>
+							<tr>
+								<td><code>RoadNode* to()</code></td>
+								<td>the ending vertex of this edge
+</td>
+							</tr>
+							<tr>
+								<td><code>double cost()</code></td>
+								<td>cost to traverse this edge</td>
+							</tr>
+
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the edge for debugging</td>
+							</tr>
+
+							
+							
+						</tbody></table>
+					</p>
+
+					<hr>
+
+					<h2>
+					<a>
+						RoadGraph
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+
+					<p>
+						The vertexes and edges are contained inside a RoadGraph object passed to each of your algorithm functions.  
+					</p>
+
+<!--
+	Set<RoadNode*> getNeighbors(RoadNode* v);
+    RoadEdge * getRoadEdge(RoadNode* start, RoadNode* end);
+    double getMaxRoadSpeed();
+    double getCrowFlyDistance(RoadNode* start, RoadNode* end);
+    double getRoadName(RoadEdge * edge);
+ -->
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="" class="col-sm-6">RoadGraph Methods</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tbody><tr>
+								<td><code>Set&lt;RoadNode*&gt; neighborsOf(RoadNode* v)</code></td>
+								<td>get all RoadNodes that can be reached by a single edge from v</td>
+							</tr>
+							<tr>
+								<td><code>RoadEdge * edgeBetween(RoadNode* start, RoadNode* end)</code></td>
+								<td>return the edge that connects start to end</td>
+							</tr>
+							<tr>
+								<td><code>double getMaxRoadSpeed()</code></td>
+								<td>the fastest speed of any edge in the graph</td>
+							</tr>
+
+							<tr>
+								<td><code>double getCrowFlyDistance(RoadNode* start, RoadNode* end)</code></td>
+								<td>the distance between two nodes <a href="https://en.wikipedia.org/wiki/As_the_crow_flies">as the crow flies</a>.</td>
+							</tr>
+
+							
+							
+						</tbody></table>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#algo&#39;).toggle()">
+						Graph Algorithm Details
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="algo">
+					<p>
+						Coloring: In addition to searching for a path in each algorithm, we also want you to add some code to give colors to various vertexes at various times.  This coloring information is used by the GUI to show the progress of your algorithm and to provide the appearance of animation.  To give a color to a vertex, call the color member function on that vertex's RoadNode object, passing it a global color constant such as Color::GRAY, Color::YELLOW, or Color::GREEN.  For example:
+					
+
+</p><pre>// set the start vertex's color to green
+start-&gt;setColor(Color::GREEN);</pre>
+					<p></p>
+					<p>
+						Here is a listing of colors available and when you should use them:
+						</p><ul>
+							<li>enqueued = yellow: Whenever you enqueue a node to be visited for the first time, such as in BFS and Dijkstra's algorithm when you add a node to a data structure for later processing, color it yellow (Color::YELLOW).</li>
+							<li>visited = green: Whenever your algorithm directly visits and examines a particular vertex, such as when it is dequeued from the processing queue in BFS, color it green (Color::GREEN).</li>
+							
+						</ul>
+					<p></p>
+					<p>
+						The provided GUI has an animation slider that you can drag to set a delay between coloring calls.  If the slider is not all the way to its left edge, each call to setColor on a vertex will pause the GUI briefly, causing the appearance of animation so that you can watch your algorithms run. 
+					</p>
+
+					<hr>
+				<h2>
+					<a>
+						Path Finding
+					</a>
+				</h2>
+
+					<p>
+						See the <a href="http://web.stanford.edu/class/cs106b/assnFiles/trailblazer/output/">expected output files</a> for reference on what your program should do. For Dijkstra's and A* you should get the same path costs as shown in the expected outputs.  But you do not need to exactly match our path itself, nor its "locations visited", so long as your path is a correct one
+					</p>
+
+					<p>Check out the <a href="http://web.stanford.edu/class/cs106b//handouts/search.html">search handout</a> for an example of the search algorithms. You can choose to rely on the pseudocode we go over in lecture, or try to come up with your own pseudocode of the algorithms on your own.</p>
+<!-- 					<p>
+						<center>
+						<img src="//web.stanford.edu/class/cs106b/img/handouts/search/algo.png" style="width:60%"></img>
+					</center>
+					</p> -->
+					<p>
+						<b>Breadth-first search implementation notes:</b> Implement the version of the algorithm pseudo-code from lecture. Make sure to keep track of nodes that you have already visited.
+					</p>
+					<p>
+						<b>Dijkstra's algorithm implementation notes:</b> The version of Dijkstra that we talk about in class is slightly different than the version in the book. Your implementation of Dijkstra's algorithm can follow any version. The one we talked about in lecture is probably the easiest. The priority queue should store paths, and once you find a path that ends in the destination, you should reconstruct the shortest path back.  See the lecture slides for more details.
+					</p>
+					
+
+					<p>
+						<b>A* implementation notes:</b> As discussed in class, the A* search algorithm is essentially a variation of Dijkstra's algorithm that uses heuristics to fine-tune the order of elements in its priority queue to explore more likely desirable elements first.  So when you are implementing A*, you need a heuristic function to incorporate into the algorithm.  
+					</p>
+
+					<p>
+						You can compare the behavior of Dijkstra's algorithm and A* (or any pair of algorithms).  First try performing a search between two points using Dijkstra's algorithm, then select A* and press the "Run" button at the top of the GUI window.  This will repeat the same search using the currently selected algorithm.  Run a search using Dijkstra's algorithm, switch the algorithm choice to "A*," then run that search to see how much more efficient A* is.
+					</p>
+
+
+					<hr>
+				<h2>
+					<a>
+						A* Heuristic
+					</a>
+				</h2>
+
+					<p>In order for A* to work, you need to define a <i>heuristic</i> function which under-estimates the cost of travelling between two vertices.</p>
+
+					<p>
+						For a road map (where cost is travel time), a simple heuristic is to calculate the time it would take to get between the nodes assuming that there was a direct super highway between the two nodes. If the speed of a super highway is as fast or faster than the speed on any road then the algorithm will underestimate the true graph distance (which makes it an <a href="https://en.wikipedia.org/wiki/Admissible_heuristic">admissable heuristic</a>). To calculate how long it would take to travel along a super highway between two nodes use the two RoadGraph functions: <code>getCrowFlyDistance</code> and <code>getMaxRoadSpeed</code>.
+					</p>
+					<p>
+						Recall that <b>travelTime = distance / <a href="https://en.wikipedia.org/wiki/Speed#Definition">speed</a> </b>.
+					</p>
+					<p>
+						Your A* search algorithm should always return a path with the same length and cost as the path found by Dijkstra's algorithm.  If you find that the algorithms give paths of different costs, it probably indicates a bug in your solution.  
+					</p>
+
+					
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#altRoute&#39;).toggle()">
+						Alternative Route
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="algo">
+
+					<p>When travelling between two points on a road map, you may want to take the fastest route, but if there is a reasonable alternative you might prefer that instead. For example, though highway 101 is often slightly faster way to get to San Francisco, highway 280 is more beautiful (Chris Gregg thinks that you should also consider going all the way to highway 1). Your final task is to implement the <code>alternativeRoute</code> function. </p>
+
+					<p>In this example the shortest path between the oval and the back of MemChu is shown in red, and a next best alternative is shown in blue:</p>
+
+					<p>
+						</p><center>
+						<img style="width:50%" src="./CS106B Assignment 7 Trailblazer_files/altRoute.png">
+					</center>
+					<p></p>
+
+					<p>
+						We already know how to find a shorest path from a start to a goal. How do we find an alternate route?
+					</p><p>
+					To find an alternate path from a start node to an end node, first we are going to calculate the best (aka shortet) path between start and end. Then, for each edge in the best path we are going to calculate the shortest path from start to end that ignores that edge. Each search will return a candidate "alternate route". Your function should return the lowest cost alternate route that is sufficiently different from the original best path. 
+
+					</p><p>
+                                        The difference of an alternate path P from the best path B is defined to be the number of nodes that are in P, but are not in B divided by the number of nodes in B:
+                                        </p>
+
+                                        <p>
+                                        	</p><center>
+                                        	<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mtext&gt;difference&lt;/mtext&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mtext&gt;# nodes in P that are not in B&lt;/mtext&gt;&lt;mtext&gt;# nodes in B&lt;/mtext&gt;&lt;/mfrac&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 19.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 17.797em; height: 0px; font-size: 112%;"><span style="position: absolute; clip: rect(0.96em 1017.8em 3.001em -999.997em); top: -2.229em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mtext" id="MathJax-Span-3" style="font-family: MathJax_Main;">difference</span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic;">P<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.131em;"></span></span><span class="mo" id="MathJax-Span-6" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic; padding-left: 0.195em;">B</span><span class="mo" id="MathJax-Span-8" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-9" style="font-family: MathJax_Main; padding-left: 0.258em;">=</span><span class="mfrac" id="MathJax-Span-10" style="padding-left: 0.258em;"><span style="display: inline-block; position: relative; width: 9.314em; height: 0px; margin-right: 0.131em; margin-left: 0.131em;"><span style="position: absolute; clip: rect(3.32em 1009.12em 4.34em -999.997em); top: -4.589em; left: 50%; margin-left: -4.589em;"><span class="mtext" id="MathJax-Span-11" style="font-size: 70.7%; font-family: MathJax_Main;"># nodes in P that are not in B</span><span style="display: inline-block; width: 0px; height: 4.021em;"></span></span><span style="position: absolute; clip: rect(3.32em 1003.89em 4.34em -999.997em); top: -3.568em; left: 50%; margin-left: -1.974em;"><span class="mtext" id="MathJax-Span-12" style="font-size: 70.7%; font-family: MathJax_Main;"># nodes in B</span><span style="display: inline-block; width: 0px; height: 4.021em;"></span></span><span style="position: absolute; clip: rect(0.832em 1009.31em 1.279em -999.997em); top: -1.272em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 9.314em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.087em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.235em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.711em; border-left: 0px solid; width: 0px; height: 1.932em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>difference</mtext><mo stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mtext># nodes in P that are not in B</mtext><mtext># nodes in B</mtext></mfrac></math></span></span><script type="math/tex" id="MathJax-Element-1">\text{difference}(P, B) = \frac{\text{# nodes in P that are not in B}}{\text{# nodes in B}}</script>
+                                        </center>
+                                        <!--<center>
+						<img style="width:50%" src="//web.stanford.edu/class/cs106b/img/assn/trailblazer/percentDiff.gif"></img>
+					</center>-->
+                                        <p></p>
+
+
+               <p>
+               	For each edge in the best path you will produce one candidate alternate route. Your function should choose, from those candidates, the shortest path  that has a difference score greater than 0.2 when compared to the the original best path (see the defined constant SUFFICIENT_DIFFERENCE).
+                                        </p>
+                                        
+                                        
+
+                                        <div class="well" style="background-color:white">
+                                        	<b>Example of alternative route calculation:</b> In the graph below the shortest path from Start to End has four edges. For each edge we compute a candidate alternate route:
+                                        	<p>
+                                        	</p><center>
+                                        		<img style="width:70%" src="./CS106B Assignment 7 Trailblazer_files/altRouteAlgo.png">
+                                        	</center>
+                                        <p></p>
+                                        	<p>
+                                        		The shortest alternate route is the path Start -&gt; D -&gt; A -&gt; B -&gt; C -&gt; End. However it has a difference score of 0.2 (recall that we are looking for a path with difference score <i>greater than</i> 0.2). The shortest alternative that <i>also</i> has a difference greater that 0.2 is:<br><code>&nbsp;&nbsp;&nbsp;&nbsp;Start -&gt; A -&gt; E -&gt; F -&gt; C -&gt; End</code><br>That is the path that your alternative path algorithm returns.
+
+														</p></div>
+                                        <p>
+                                        There are different ways to accomplish the modification to your path algorithm.
+                                        One option is to simply write a separate and modified Dijkstra
+                                        or A* function that has the ability to ignore an edge.
+                                        While this option is allowed for your project, it does duplicate a lot of code.
+                                        A better option would be to <i>refactor</i> your code and write a modified function 
+                                        that performs Dijstra or A* and can either
+                                        perform the standard algorithm <i>or</i> can ignore a given edge. Then, modify your original
+                                        Dijkstra or A* function to simply call your new function. 
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#maze').toggle()">
+						Random Maze
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="maze">
+					<p>
+						Your final task in this assignment is to implement Kruskal's algorithm for finding a minimum spanning tree.  Your function should accept a graph as a parameter, and you should return a set of pointers to edges in the graph such that those edges would connect the graph's vertexes into a minimum spanning tree.  (Don't actually add/remove edges from the graph object passed in by calling addRoadEdge, removeRoadEdge, etc. on it.  Just return the set of edges separately.)  Specifically, your task is to write a function with the following signature:
+					</p>
+					<p>
+						<pre>Set<RoadEdge*> kruskal(BasicGraph& graph)</pre>
+					</p>
+					<p>Recall the pseudocode for Kruskal's algorithm from lecture:</p>
+					<p>
+						<pre>kruskal(graph):
+    Place each vertex into its own "cluster" (group of reachable vertexes).
+    Put all edges into a priority queue, using weights as priorities.
+    While there are two or more separate clusters remaining:
+        Dequeue an edge e from the priority queue.
+        If the start and finish vertexes of e are not in the same cluster:
+            Merge the clusters containing the start and finish vertexes of e.
+            Add e to your spanning tree.
+    Once the while loop terminates, your spanning tree is complete.</pre>
+					</p>
+					<p>
+						The specific application we'll Kruskal's algorithm to solve is the problem of generating new random mazes.  As discussed earlier in this handout, you can think of a maze as a graph, where the vertexes are connected as follows.  The following figure would be a fully connected maze with no walls:
+					</p>
+					<p>
+						<center>
+							<img style="width:40%" src="//web.stanford.edu/class/cs106b/img/assn/trailblazer/grid.png">
+						</center>
+					</p>
+					<p>
+						If you assign each edge a random weight and then run Kruskal's algorithm on the resulting graph, you will end up with a spanning tree; there will be exactly one path between each pair of vertexes.  For example, assigning the edges in the above graph weights as follows and running Kruskal's algorithm would produce the following result:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="//web.stanford.edu/class/cs106b/img/assn/trailblazer/kruskal1.png">
+						</center>
+					</p>
+					<p>In the above tree, lines represent edges between connected neighbors, which are passable.  Neighbors that are not connected by an edge can be thought of as having an impassable "wall" between them.  You can turn the above tree into a maze by drawing lines in all of the empty space, as shown here:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="//web.stanford.edu/class/cs106b/img/assn/trailblazer/kruskal2.png">
+						</center>
+					</p>
+					<p>
+						Whenever you click the GUI's "Load" button with one of the "Random" options selected, our starter code will generate a maze of the given size with every vertex connected to all of its neighbors, as in the "fully connected" maze figure above.  Our code will randomly assign weights to each edge for you; you shouldn't change the weights we pass in.  Then we will pass the graph to your algorithm for you to find the minimum spanning tree.  Once you return your set of edges, our starter code will process your set and fill in "walls" between any neighbors that are not directly connected by an edge.  The resulting maze will show in the GUI.  Once you've made a maze, you can run your path-finding algorithms to locate paths between points in the maze.  Implementing this function raises questions such as:
+						<ol>
+							<li>How will you keep track of which nodes are in each cluster?</li>
+							<li>How will you determine which cluster a node belongs to?</li>
+							<li>How will you merge together two clusters?</li>
+						</ol>
+					</p>
+					<p>
+						Think about these issues yourself and come up with a clean and efficient way of solving the problem.  Our own sample solution is able to generate "Large" sized mazes in a few seconds' time at most, and you should strive for similar efficiency.  If your maze generation algorithm takes, say, close to a minute or more to finish, optimize it.
+					</p>
+					<p>
+						For Kruskal's algorithm (described next), your code must find a valid minimum spanning tree on the given graph.  If there are several of equal total weight, any will suffice.
+					</p>
+				</div>
+			</div>
+		</div>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#creative&#39;).toggle()">
+						Creative Aspect
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="creative">
+					<p>Turn in files map-custom.txt and map-custom.jpg representing a map graph of your own.  Put the files into the res/ folder of your project.  The text file contains information about the graph's vertexes and edges.  The graph can be whatever you want, so long as it is not essentially the same as any of the provided graphs.  Your image can be any (non-offensive) JPEG image you like; we encourage you to use a search engine like Google Image Search to find an interesting background.  The text file's format should exactly match the following example, from map-small.txt.  For full credit, your file should load successfully into the program without causing an error and be searchable by the user.</p>
+					<p>
+						</p><center>
+							<img style="width:100%" src="./CS106B Assignment 7 Trailblazer_files/creative.png">
+						</center>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<h2>
+					<a onclick="$(&#39;#strategy&#39;).toggle()">
+						Development Strategy
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="strategy">
+					<ul>
+						<li>Trace through the algorithms by hand on small sample graphs before coding them.</li>
+						<li>Work step-by-step.  Complete each algorithm before starting the next one.  You can test each individually even if others are incomplete.  We suggest doing BFS, then Dijkstra's, then A*, and finally Alternative Route.</li>
+						<li>Start out with tiny worlds first.  It is much easier to trace your algorithm and/or print every step of its execution if the world is small.  Try small or middle earth before trying one of the large graphs (especially Stanford, Istanbul or San Francisco)</li>
+
+						<li>Remember that edge costs are doubles, not ints.</li>
+						<li>In both A* and Dijkstra you will need to calculate the cost of a path. You can (but don't have to) memoize the cost calculation.</li>
+						
+						<li>In Dijkstra's algorithm, don't stop your algorithm early when you enqueue the ending vertex; stop it when you dequeue the ending vertex (that is, when you color the vertex green).</li>
+						<li>The alternate path algorithm that we ask you to implement is slow. Test it on small maps. On the Stanford map it can take seconds and on Istanbul and San Francisco it can take minutes.</li>
+
+					</ul>
+					<hr>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					<a onclick="$(&#39;#extension&#39;).toggle()">
+					Possible Extra Features 
+					<span class="caret"></span>
+				</a>
+				</h2>
+				
+				<div id="extension" style="display:none">
+					<p>
+						Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment. Here are some example ideas for extra features that you could add to your program.
+					</p>
+					<ol>
+						<li><b>Implement bidirectional search:</b>  A common alternative to using A* search is to use a bidirectional search algorithm, in which you search outward from both the start and end vertexes simultaneously.  As soon as the two searches find a vertex in common, you can construct a path from the start vertex to the end vertex by joining the two paths to that vertex together.  Try coding this algorithm up as a fifth algorithm choice.</li>
+						<li><b>Better alternate:</b>  The alternate route algorithm is slow and not guaranteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>
+						<li><b>Add more data from open maps:</b>  We generated the maps from openstreetmaps.org. In the graphs you see we added some nodes and edges, but let out a lot of interesting information (like street names and building). <a href="http://web.stanford.edu/class/cs106b/assnFiles/trailblazer/open-map-converter">Here is a link</a> to a folder with all of the raw openstreetmap data. Do anything you like with it. Can you print out direction? We haven't tried yet but it seems interesting!</li>
+						<!--<li><b>Add more data from open maps:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>-->
+						<!--<li><b>Implement a disjoint-set forest:</b>  When implementing Kruskal's algorithm, you need a way to keep track of which vertexes in the graph are connected to one another.  While it's possible to do this using the standard collections types, there is an extremely simple and much faster way to do this using a disjoint-set forest, a specialized data structure that makes it easy to determine if two vertexes are connected and to connect pairs of vertexes.  It is not particularly hard to code up a disjoint-set forest, and doing so can dramatically reduce time required to create a maze.</li>
+						<li><b>Make a new world type:</b>  The existing code has several classes that extend a superclass World to represent maps, mazes, and terrains.  Add your own new subclass for a type of world that we didn't include.</li>
+						<li><b>Write better heuristics: </b> The heuristics we have provided for estimating terrain costs and map / maze distances are simple admissible heuristics that work reasonably well.  Try seeing if you can modify these functions to produce more accurate heuristics.  If you do this correctly, you can cut down on the amount of unnecessary searching required.  However, make sure that your heuristics are admissible; that is, they should never overestimate the distance from any starting vertex to any destination vertex.</li>
+						<li><b>Choose a different maze-generation algorithm: </b> Kruskal's algorithm is only one of many ways to generate a random maze.  Another minimum spanning tree algorithm called Prim's algorithm can also be used here to generate random mazes.  Try adding Prim's algorithm in addition to Kruskal's algorithm for maze generation.  Can you generate more complicated mazes and maps?</li>
+						<li><b>Write a better terrain generator:  </b>Our starter code generates terrain uses the diamond-square algorithm, coupled with a Gaussian blur.  Many other algorithms exist that can generate random terrains, such as the 2D Perlin Noise algorithm.  Try implementing a different terrain generator and see if it produces better results.</li>-->
+						<li><b>Other:</b> If you have your own creative idea for an extra feature, go for it!</li>
+					</ol>
+					<h4 class="secondHeading">Indicating that you have done extra features:</h4>
+					<p>
+						 If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+					</p>
+					<h4 class="secondHeading">Submitting a program with extra features:</h4>
+					<p>Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features. If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file: a first one named trailblazer.cpp without any extra features added (or with all necessary features disabled or commented out), and a second one named trailblazer-extra.cpp with the extra features enabled. Please distinguish them in by explaining which is which in the comment header. Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.</p>
+
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+		
+		
+
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				© Stanford 2017 | Created by Chris Gregg.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Math-italic, sans-serif;"></div></div></body></html>
